@@ -6,19 +6,29 @@ public class Champ {
 	    private String name;
 		private double baseLife;
 		private double baseMana;
-		
+		private String champPic;
 		//Relations
 		private Skill[] skills;
 		
 		//Methods	
-		public String getName() {
-			return name;
-		}
-		public Champ(String name, double baseLife, double baseMana) {
+		public Champ(String name,String champPic, double baseLife, double baseMana) {
 			this.name = name;
 			this.baseLife = baseLife;
 			this.baseMana = baseMana;
+		    this.champPic= champPic;
 			skills= new Skill[5];
+		}
+		
+		public String getChampPic() {
+			return champPic;
+		}
+
+		public void setChampPic(String champPic) {
+			this.champPic = champPic;
+		}
+
+		public String getName() {
+			return name;
 		}
 		public void setName(String name) {
 			this.name = name;
@@ -39,6 +49,13 @@ public class Champ {
 			return skills;
 		}
 		
-		
+		public void addSkills(double damage, String description, double manaCost) {
+			Skill s= new Skill(damage,description,manaCost);
+            for(int i=0;i<skills.length;i++) {
+            	if(skills[i]==null) {
+            		skills[i]=s;
+            	}
+            }
+		}
 		
 }
