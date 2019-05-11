@@ -17,16 +17,19 @@ public class Game {
 	    private static final String SAVE_PLAYERS="playerSave/playersSave.ps";
 	    
 	    //Methods
-		public Game() throws ClassNotFoundException, IOException {
+		public Game() throws ClassNotFoundException, IOException 
+		{
             load();
 		}
 		
-		public ArrayList<Player> getPlayers() {
+		public ArrayList<Player> getPlayers() 
+		{
 			return players;
 		}
 		
 		@SuppressWarnings("unchecked")
-		private void load() throws IOException, ClassNotFoundException {
+		private void load() throws IOException, ClassNotFoundException 
+		{
 			  File archivo= new File(SAVE_PLAYERS);
 			  if(archivo.exists()) {
 				  ObjectInputStream ois= new ObjectInputStream(new FileInputStream(archivo));
@@ -37,9 +40,17 @@ public class Game {
 			  }
 		}
 		
-		public void save() throws IOException {
+		public void save() throws IOException 
+		{
 			  ObjectOutputStream oos= new ObjectOutputStream(new FileOutputStream(SAVE_PLAYERS));
 			  oos.writeObject(players);
 			  oos.close();
 		}
+        
+		public void addPlayer(String name, String profilePicture)
+		{
+			Player p1= new Player(name,profilePicture);
+			players.add(p1);
+		}
+
 }

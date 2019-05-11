@@ -14,37 +14,45 @@ public class Player {
     //Relations
     private Champ[] champions;
     
-	public Player(String name, String profilePicture) {
+	public Player(String name, String profilePicture) 
+	{
 		this.name = name;
 		this.profilePicture = profilePicture;
 		
 		champions= new Champ[6];
 	}
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
     
-	public String getProfilePicture() {
+	public String getProfilePicture() 
+	{
 		return profilePicture;
 	}
 
-	public void setProfilePicture(String profilePicture) {
+	public void setProfilePicture(String profilePicture) 
+	{
 		this.profilePicture = profilePicture;
 	}
-	public Champ[] getChampions() {
+	public Champ[] getChampions() 
+	{
 		return champions;
 	}
 
-	public void setChampions(Champ[] champions) {
+	public void setChampions(Champ[] champions)
+	{
 		this.champions = champions;
 	}
 
-    public void assignChamp() throws IOException {   
+    public void assignChamp() throws IOException
+    {   
     	for(int i=0;i<6;i++) {
     		int numero = (int) (Math.random() * 6) + 1;  	
     		File f= new File("champs/"+numero+"-Champ.txt");

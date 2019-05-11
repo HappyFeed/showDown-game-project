@@ -11,7 +11,8 @@ public class Champ {
 		private Skill[] skills;
 		
 		//Methods	
-		public Champ(String name,String champPic, double baseLife, double baseMana) {
+		public Champ(String name,String champPic, double baseLife, double baseMana)
+		{
 			this.name = name;
 			this.baseLife = baseLife;
 			this.baseMana = baseMana;
@@ -19,37 +20,47 @@ public class Champ {
 			skills= new Skill[5];
 		}
 		
-		public String getChampPic() {
+		public String getChampPic() 
+		{
 			return champPic;
 		}
 
-		public void setChampPic(String champPic) {
+		public void setChampPic(String champPic) 
+		{
 			this.champPic = champPic;
 		}
 
-		public String getName() {
+		public String getName() 
+		{
 			return name;
 		}
-		public void setName(String name) {
+		public void setName(String name) 
+		{
 			this.name = name;
 		}
-		public double getBaseLife() {
+		public double getBaseLife() 
+		{
 			return baseLife;
 		}
-		public void setBaseLife(double baseLife) {
+		public void setBaseLife(double baseLife)
+		{
 			this.baseLife = baseLife;
 		}
-		public double getBaseMana() {
+		public double getBaseMana() 
+		{
 			return baseMana;
 		}
-		public void setBaseMana(double baseMana) {
+		public void setBaseMana(double baseMana) 
+		{
 			this.baseMana = baseMana;
 		}
-		public Skill[] getSkills() {
+		public Skill[] getSkills() 
+		{
 			return skills;
 		}
 		
-		public void addSkills(double damage, String description, double manaCost) {
+		public void addSkills(double damage, String description, double manaCost) 
+        {
 			Skill s= new Skill(damage,description,manaCost);
             for(int i=0;i<skills.length;i++) {
             	if(skills[i]==null) {
