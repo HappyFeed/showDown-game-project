@@ -53,19 +53,17 @@ public class Player {
 
     public void assignChamp() throws IOException
     {   
-    	for(int i=0;i<6;i++) {
-    		int numero = (int) (Math.random() * 6) + 1;  	
-    		File f= new File("champs/"+numero+"-Champ.txt");
+    	for(int i=0;i<1;i++) {
+    		int numero = (int) (Math.random() * 1) + 1;  	
+    		File f= new File("champs/"+numero+"-champ.txt");
         	FileReader fr= new FileReader(f);
         	BufferedReader br= new BufferedReader(fr);
         	String line=br.readLine();
         	while(line !=null) {
-        	   	if(line.startsWith("#")) {
-        	   		line=br.readLine();
-        	    }else if(line.startsWith("C:")) {
+                if(line.startsWith("#")) {
         	    	 String[] parts=line.split(";");
-        	    	 String nameChamp=parts[0];
-        	    	 String champPic=parts[1];
+        	    	 String nameChamp=parts[1];
+        	    	 String champPic=parts[2];
         	    	 double baseLife=Double.parseDouble(parts[3]);
         	    	 double baseMana=Double.parseDouble(parts[4]);
         	    	 Champ ch= new Champ(nameChamp, champPic,baseLife,baseMana);
@@ -73,11 +71,11 @@ public class Player {
         	    		 champions[i]=ch;
         	    	 }
         	    	 line=br.readLine();
-        	    }else {
+        	    }else if(line.startsWith("S")){
         	    	String[] parts=line.split(";");
-        	    	double damage=Double.parseDouble(parts[0]);
-        	    	String description=parts[1];
-        	    	double manaCost=Double.parseDouble(parts[2]);
+        	    	double damage=Double.parseDouble(parts[1]);
+        	    	String description=parts[2];
+        	    	double manaCost=Double.parseDouble(parts[3]);
         	    	champions[i].addSkills(damage, description, manaCost);
         	    }
         	}

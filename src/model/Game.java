@@ -19,7 +19,7 @@ public class Game {
 	    //Methods
 		public Game() throws ClassNotFoundException, IOException 
 		{
-            load();
+
 		}
 		
 		public ArrayList<Player> getPlayers() 
