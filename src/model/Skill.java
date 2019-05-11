@@ -2,48 +2,42 @@ package model;
 
 public class Skill {
      
-	private double damage;
+	private String skillName;
 	private String description;
-	private double manaCost;
+	private double skillPower;
 	
 	//Methods
-    
-
-	public double getDamage() 
-	{
-		return damage;
-	}
-
-	public Skill(double damage, String description, double manaCost) 
-	{
-		this.damage = damage;
+	public Skill(String skillName, String description, double skillPower) {
+		super();
+		this.skillName = skillName;
 		this.description = description;
-		this.manaCost = manaCost;
+		this.skillPower = skillPower;
 	}
 
-	public void setDamage(double damage) 
-	{
-		this.damage = damage;
+	public String getSkillName() {
+		return skillName;
 	}
 
-	public String getDescription()
-	{
+	public void setSkillName(String skillName) {
+		this.skillName = skillName;
+	}
+
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) 
-	{
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public double getManaCost() 
-	{
-		return manaCost;
+	public double getSkillPower() {
+		return skillPower;
 	}
 
-	public void setManaCost(double manaCost) 
-	{
-		this.manaCost = manaCost;
+	public void setSkillPower(double skillPower) {
+		this.skillPower = skillPower;
 	}
+	
+	
 	
 }
