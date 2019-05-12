@@ -8,21 +8,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MatchController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="722.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MatchController">
    <children>
-      <Circle fx:id="poke6" fill="DODGERBLUE" layoutX="100.0" layoutY="507.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="poke5" fill="DODGERBLUE" layoutX="43.0" layoutY="507.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="poke4" fill="DODGERBLUE" layoutX="100.0" layoutY="454.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="poke3" fill="DODGERBLUE" layoutX="43.0" layoutY="454.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="poke2" fill="DODGERBLUE" layoutX="100.0" layoutY="405.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="poke1" fill="DODGERBLUE" layoutX="43.0" layoutY="405.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="creature1" layoutX="22.0" layoutY="384.0" mnemonicParsing="false" onAction="#switchPoke1" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500; -fx-background-size: 100;" />
-      <Button fx:id="creature2" layoutX="79.0" layoutY="384.0" mnemonicParsing="false" onAction="#switchPoke2" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
-      <Button fx:id="creature3" layoutX="22.0" layoutY="433.0" mnemonicParsing="false" onAction="#switchPoke3" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
-      <Button fx:id="creature4" layoutX="79.0" layoutY="433.0" mnemonicParsing="false" onAction="#switchPoke4" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
-      <Button fx:id="creature5" layoutX="22.0" layoutY="486.0" mnemonicParsing="false" onAction="#switchPoke5" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
-      <Button fx:id="creature6" layoutX="79.0" layoutY="486.0" mnemonicParsing="false" onAction="#switchPoke6" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
+      <Circle fx:id="poke6" fill="DODGERBLUE" layoutX="153.0" layoutY="446.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="poke5" fill="DODGERBLUE" layoutX="153.0" layoutY="396.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="poke4" fill="DODGERBLUE" layoutX="100.0" layoutY="448.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="poke3" fill="DODGERBLUE" layoutX="43.0" layoutY="448.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="poke2" fill="DODGERBLUE" layoutX="100.0" layoutY="396.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="poke1" fill="DODGERBLUE" layoutX="43.0" layoutY="395.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="creature1" layoutX="22.0" layoutY="372.0" mnemonicParsing="false" onAction="#switchPoke1" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500; -fx-background-size: 100;" />
+      <Button fx:id="creature2" layoutX="79.0" layoutY="374.0" mnemonicParsing="false" onAction="#switchPoke2" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
+      <Button fx:id="creature3" layoutX="22.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchPoke3" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
+      <Button fx:id="creature4" layoutX="79.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchPoke4" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
+      <Button fx:id="creature5" layoutX="132.0" layoutY="374.0" mnemonicParsing="false" onAction="#switchPoke5" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
+      <Button fx:id="creature6" layoutX="132.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchPoke6" prefHeight="42.0" prefWidth="42.0" style="-fx-background-radius: 500;" />
       <Label fx:id="rivalPlayer" layoutX="530.0" layoutY="37.0" text="Player 2" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="14.0" />
@@ -50,16 +49,16 @@
             <Rectangle fx:id="currentHPRival" arcHeight="5.0" arcWidth="5.0" fill="#04ff00" height="17.0" layoutX="221.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="170.0" />
          </children>
       </Pane>
-      <Button fx:id="attack1" layoutX="370.0" layoutY="405.0" mnemonicParsing="false" onAction="#attack1" prefHeight="55.0" prefWidth="99.0" />
-      <Button fx:id="attack2" layoutX="485.0" layoutY="406.0" mnemonicParsing="false" onAction="#attack2" prefHeight="55.0" prefWidth="99.0" />
-      <Button fx:id="attack3" layoutX="370.0" layoutY="480.0" mnemonicParsing="false" onAction="#attack3" prefHeight="55.0" prefWidth="99.0" />
-      <Button fx:id="attack4" layoutX="485.0" layoutY="480.0" mnemonicParsing="false" onAction="#attack4" prefHeight="55.0" prefWidth="99.0" />
+      <Button fx:id="attack1" layoutX="262.0" layoutY="390.0" mnemonicParsing="false" onAction="#attack1" prefHeight="55.0" prefWidth="99.0" />
+      <Button fx:id="attack2" layoutX="376.0" layoutY="390.0" mnemonicParsing="false" onAction="#attack2" prefHeight="55.0" prefWidth="99.0" />
+      <Button fx:id="attack3" layoutX="491.0" layoutY="390.0" mnemonicParsing="false" onAction="#attack3" prefHeight="55.0" prefWidth="99.0" />
+      <Button fx:id="attack4" layoutX="605.0" layoutY="390.0" mnemonicParsing="false" onAction="#attack4" prefHeight="55.0" prefWidth="99.0" />
       <Label fx:id="turns" layoutX="92.0" layoutY="33.0" style="-fx-background-color: #1b1b1b;" text="Turn 0" textFill="#a89b9b">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="433.0" layoutY="356.0" text="ATTACKS" textFill="WHITE">
+      <Label layoutX="441.0" layoutY="342.0" text="ATTACKS" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
@@ -74,12 +73,12 @@
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="203.0" layoutY="520.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="30.0" prefWidth="88.0" text="SAVE GAME">
+      <Button layoutX="611.0" layoutY="261.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="30.0" prefWidth="88.0" text="SAVE GAME">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="203.0" layoutY="480.0" mnemonicParsing="false" onAction="#giveUp" prefHeight="30.0" prefWidth="88.0" text="GIVE UP">
+      <Button layoutX="611.0" layoutY="211.0" mnemonicParsing="false" onAction="#giveUp" prefHeight="30.0" prefWidth="88.0" text="GIVE UP">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
