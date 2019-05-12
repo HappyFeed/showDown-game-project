@@ -10,7 +10,7 @@ public class Pokemon {
 	    //Attributes
 	    private String name;
 		private String champPic;
-		private Kind k;
+		private Type k;
 		private double baseLife;
 		private double basicAtack;
 		private double basicDefense;
@@ -22,7 +22,7 @@ public class Pokemon {
 		private Skill[] skills;
 		
 		//Methods	
-		public Pokemon(String name, String champPic, Kind k, double baseLife, double basicAtack, double basicDefense,
+		public Pokemon(String name, String champPic, Type k, double baseLife, double basicAtack, double basicDefense,
 				double especialAtack, double especialDefense, double speed) {
 			super();
 			this.name = name;
@@ -58,12 +58,12 @@ public class Pokemon {
 		}
 
 
-		public Kind getK() {
+		public Type getK() {
 			return k;
 		}
 
 
-		public void setK(Kind k) {
+		public void setK(Type k) {
 			this.k = k;
 		}
 

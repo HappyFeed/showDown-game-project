@@ -45,7 +45,7 @@ public class Player {
 	{
 		this.team = champions;
 	}
-	public void addPokemon(String name, String champPic, Kind k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) {
+	public void addPokemon(String name, String champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) {
 		Pokemon p= new Pokemon(name, champPic, k, baseLife, basicAtack, basicDefense, especialAtack, especialDefense, speed);
 		for(int i=0; i<team.length;i++) {
 			if(team[i]==null) {
