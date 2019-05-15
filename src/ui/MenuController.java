@@ -21,5 +21,11 @@ public class MenuController {
 		
 
     }
+    
+    @FXML
+    void loadGame(ActionEvent event){
+    	
+    	
+    }
 
 }
