@@ -18,7 +18,7 @@ public class MenuController {
     	Parent root = FXMLLoader.load(getClass().getResource("SelectCharacter.fxml"));
     	Scene scene = new Scene(root);
 		Main.stage.setScene(scene);
-	
+		
 
     }
 
