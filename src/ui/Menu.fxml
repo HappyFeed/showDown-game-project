@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="471.0" fitWidth="810.0" layoutX="-32.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/5cd84ffca5b5b_image.png" />
+            <Image url="ui/5cd84ffca5b5b_image.png" />
          </image>
       </ImageView>
       <Button layoutX="22.0" layoutY="342.0" mnemonicParsing="false" onAction="#start" prefHeight="79.0" prefWidth="174.0" style="-fx-background-radius: 100; -fx-background-color: black;" text="START" textFill="WHITE">
