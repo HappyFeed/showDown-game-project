@@ -8,7 +8,11 @@ public class Player implements Serializable{
 	private String name;
     private String profilePicture;
     
-    //Relations
+    private Player next;
+    private Player prev;
+    
+
+	//Relations
     private Pokemon[] team;
     
 	public Player(String name, String profilePicture) 
@@ -47,6 +51,23 @@ public class Player implements Serializable{
 	{
 		this.team = champions;
 	}
+	
+    public Player getNextPlayer() {
+		return next;
+	}
+
+	public void setNextPlayer(Player next) {
+		this.next = next;
+	}
+
+	public Player getPrevPlayer() {
+		return prev;
+	}
+
+	public void setPrevPlayer(Player prev) {
+		this.prev = prev;
+	}
+	
 	public void addPokemon(String name, String champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) {
 		Pokemon p= new Pokemon(name, champPic, k, baseLife, basicAtack, basicDefense, especialAtack, especialDefense, speed);
 		for(int i=0; i<team.length;i++) {

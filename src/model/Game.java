@@ -2,33 +2,68 @@ package model;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Game implements Serializable{
 
 	
 	//Relations
-	    private Player[] players;
+	    private Player firstPlayer;
 	
 
 	    //Methods
 		public Game() {
-			players= new Player[2];
+			
 		}
 		
-		public Player[] getPlayers() {
-			return players;
+		public Player getFirstPlayer() {
+			return firstPlayer;
 		}
 		
         
-		public void addPlayer(String name, String profilePicture)
-		{
-			Player p1= new Player(name,profilePicture);
-			for(int i=0;i<players.length;i++) {
-				if(players[i]==null) {
-					players[i]=p1;
+		public boolean addPlayer(String name, String profilePicture) {
+	            boolean playerAdd=true;
+	    		Player fl = new Player(name,profilePicture);
+	    		if(firstPlayer == null) {
+	    			firstPlayer = fl;
+	    		}else {
+	    			Player current = firstPlayer;
+	    			if(sizePlayers()<2) {
+		    			while(current.getNextPlayer() != null) {
+		    				current = current.getNextPlayer();
+		    			}
+		    			current.setNextPlayer(fl);
+		    			fl.setPrevPlayer(current);
+	    			}else {
+	    				playerAdd=false;
+	    			}
+
+	    		}
+	    		return playerAdd;
+		}
+		
+		public int sizePlayers() {
+			int size=0;
+			while(firstPlayer!=null) {
+				size++;
+				firstPlayer=firstPlayer.getNextPlayer();
+			}
+			return size;
+		}
+		
+		public Player searchOficialParticipant(String n) {
+			Player current = firstPlayer;
+			Player returned = null;
+			boolean stop = false;
+			while(current != null && !stop) {
+				if(current.getName().equals(n)) {
+					stop = true;
+					returned = current;
+				}else {
+						current = current.getNextPlayer();
 				}
 			}
+			
+			return returned;
 		}
 
 }

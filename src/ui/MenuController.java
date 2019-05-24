@@ -79,12 +79,7 @@ public class MenuController {
     
 	public void showInformation(ArrayList<Game> a) {
 		for(int i=0;i<a.size();i++) {
-			Alert info = new Alert(AlertType.INFORMATION);
-	    	info.setTitle("Information");
-	    	info.setHeaderText(null);
-	    	info.initStyle(StageStyle.UTILITY);
-	    	info.setContentText(a.get(i).getPlayers()[0].getName());
-	    	info.show();
+
 		}
 	}
 
