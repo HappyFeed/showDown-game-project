@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 public class SelectCharacterController {
 
@@ -67,13 +68,34 @@ public class SelectCharacterController {
     private Button back;
 
     @FXML
-    private ComboBox<?> selectPlayer;
+    private Button nextPage;
 
+    @FXML
+    private Button backPage;
+    
+    @FXML
+    private TextField namePlayers;
+    
+    @FXML
+    private ComboBox<String> selectPlayer;
+
+    @FXML
+    void initialize() {
+    	selectPlayer.getItems().add("Player 1");
+    	selectPlayer.getItems().add("Player 2");
+    	next.setVisible(false);
+    }
+    
     @FXML
     void backPage(ActionEvent event) {
 
     }
 
+    @FXML
+    void nextPage(ActionEvent event) {
+
+    }
+    
     @FXML
     void backToStage(ActionEvent event) {
     	
@@ -92,10 +114,7 @@ public class SelectCharacterController {
 
     }
 
-    @FXML
-    void nextPage(ActionEvent event) {
 
-    }
 
     @FXML
     void nextToStage(ActionEvent event) {

@@ -1,56 +1,34 @@
 package model;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Game {
- 
-		//Relations
-	    private ArrayList<Player> players;
-		
-	    //Constants
-	    private static final String SAVE_PLAYERS="playerSave/playersSave.ps";
-	    
-	    //Methods
-		public Game() throws ClassNotFoundException, IOException 
-		{
+public class Game implements Serializable{
 
+	
+	//Relations
+	    private Player[] players;
+	
+
+	    //Methods
+		public Game() {
+			players= new Player[2];
 		}
 		
-		public ArrayList<Player> getPlayers() 
-		{
+		public Player[] getPlayers() {
 			return players;
 		}
 		
-		@SuppressWarnings("unchecked")
-		private void load() throws IOException, ClassNotFoundException 
-		{
-			  File archivo= new File(SAVE_PLAYERS);
-			  if(archivo.exists()) {
-				  ObjectInputStream ois= new ObjectInputStream(new FileInputStream(archivo));
-				  players=(ArrayList<Player>) ois.readObject();
-				  ois.close();
-			  }else {
-				  players= new ArrayList<Player>();
-			  }
-		}
-		
-		public void save() throws IOException 
-		{
-			  ObjectOutputStream oos= new ObjectOutputStream(new FileOutputStream(SAVE_PLAYERS));
-			  oos.writeObject(players);
-			  oos.close();
-		}
         
 		public void addPlayer(String name, String profilePicture)
 		{
 			Player p1= new Player(name,profilePicture);
-			players.add(p1);
+			for(int i=0;i<players.length;i++) {
+				if(players[i]==null) {
+					players[i]=p1;
+				}
+			}
 		}
 
 }
