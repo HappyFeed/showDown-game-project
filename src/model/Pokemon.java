@@ -19,6 +19,9 @@ public class Pokemon implements Serializable{
 		private double especialDefense;
 		private double speed;
 		
+		private Pokemon next;
+		private Pokemon prev;
+		
 		//Relations
 		private Skill[] skills;
 		
@@ -136,6 +139,25 @@ public class Pokemon implements Serializable{
 
 		public void setSkills(Skill[] skills) {
 			this.skills = skills;
+		}
+
+		public Pokemon getNextPokemon() {
+			return next;
+		}
+
+
+		public void setNextPokemon(Pokemon next) {
+			this.next = next;
+		}
+
+
+		public Pokemon getPrevPokemon() {
+			return prev;
+		}
+
+
+		public void setPrevPokemon(Pokemon prev) {
+			this.prev = prev;
 		}
 
 

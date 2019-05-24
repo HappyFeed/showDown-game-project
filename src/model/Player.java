@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Player implements Serializable{
 	
 	//Attributes
@@ -13,14 +14,13 @@ public class Player implements Serializable{
     
 
 	//Relations
-    private Pokemon[] team;
+    private Pokemon team;
     
 	public Player(String name, String profilePicture) 
 	{
 		this.name = name;
 		this.profilePicture = profilePicture;
 		
-		team= new Pokemon[6];
 	}
 
 	public String getName() 
@@ -42,16 +42,11 @@ public class Player implements Serializable{
 	{
 		this.profilePicture = profilePicture;
 	}
-	public Pokemon[] getPokemons() 
+	public Pokemon getPokemons() 
 	{
 		return team;
 	}
 
-	public void setPokemons(Pokemon[] champions)
-	{
-		this.team = champions;
-	}
-	
     public Player getNextPlayer() {
 		return next;
 	}
@@ -68,14 +63,35 @@ public class Player implements Serializable{
 		this.prev = prev;
 	}
 	
-	public void addPokemon(String name, String champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) {
+	public boolean addPokemon(String name, String champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) {
 		Pokemon p= new Pokemon(name, champPic, k, baseLife, basicAtack, basicDefense, especialAtack, especialDefense, speed);
-		for(int i=0; i<team.length;i++) {
-			if(team[i]==null) {
-				team[i]=p;
-				i=team.length;
+        boolean pokemonAdd=true;
+		if(team == null) {
+			team = p;
+			team.setPrevPokemon(p);
+			team.setNextPokemon(p);
+		}else {
+			Pokemon current = team;
+			if(sizeTeam()<6) {				
+    			current.setNextPokemon(p);
+    			p.setPrevPokemon(current);
+    			p.setNextPokemon(team);
+    			team.setPrevPokemon(p);
+			}else {
+				pokemonAdd=false;
 			}
+
 		}
+		return pokemonAdd;
+	}
+	
+	public int sizeTeam() {
+		int size=0;
+		while(team!=null) {
+			size++;
+			team=team.getNextPokemon();
+		}
+		return size;
 	}
    	
 }
