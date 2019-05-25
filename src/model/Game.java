@@ -1,56 +1,56 @@
 package model;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
-public class Game {
- 
-		//Relations
-	    private ArrayList<Player> players;
-		
-	    //Constants
-	    private static final String SAVE_PLAYERS="playerSave/playersSave.ps";
-	    
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Game implements Serializable{
+
+	
+	//Relations
+	    private Player firstPlayer;
+	
+
 	    //Methods
-		public Game() throws ClassNotFoundException, IOException 
-		{
-
+		public Game() {
+			
 		}
 		
-		public ArrayList<Player> getPlayers() 
-		{
-			return players;
+		public Player getFirstPlayer() {
+			return firstPlayer;
 		}
 		
-		@SuppressWarnings("unchecked")
-		private void load() throws IOException, ClassNotFoundException 
-		{
-			  File archivo= new File(SAVE_PLAYERS);
-			  if(archivo.exists()) {
-				  ObjectInputStream ois= new ObjectInputStream(new FileInputStream(archivo));
-				  players=(ArrayList<Player>) ois.readObject();
-				  ois.close();
-			  }else {
-				  players= new ArrayList<Player>();
-			  }
-		}
-		
-		public void save() throws IOException 
-		{
-			  ObjectOutputStream oos= new ObjectOutputStream(new FileOutputStream(SAVE_PLAYERS));
-			  oos.writeObject(players);
-			  oos.close();
-		}
         
-		public void addPlayer(String name, String profilePicture)
-		{
-			Player p1= new Player(name,profilePicture);
-			players.add(p1);
+		public boolean addPlayer(String name, String profilePicture) {
+	            boolean playerAdd=true;
+	    		Player fl = new Player(name,profilePicture);
+	    		if(firstPlayer == null) {
+	    			firstPlayer = fl;
+	    		}else {
+	    			Player current = firstPlayer;
+	    			if(current.getNextPlayer()==null) {
+		    			current.setNextPlayer(fl);
+		    			fl.setPrevPlayer(current);
+	    			}else {
+	    				playerAdd=false;
+	    			}
+	    		}
+	    		return playerAdd;
 		}
-
+		
+		public Player searchOficialParticipant(String n) {
+			Player current = firstPlayer;
+			Player returned = null;
+			boolean stop = false;
+			while(current != null && !stop) {
+				if(current.getName().equals(n)) {
+					stop = true;
+					returned = current;
+				}else {
+						current = current.getNextPlayer();
+				}
+			}
+			
+			return returned;
+		}
 }

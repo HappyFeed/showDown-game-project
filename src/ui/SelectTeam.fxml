@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SelectTeamController">
    <children>
       <Label layoutX="248.0" layoutY="26.0" text="Choose your Team">
@@ -35,7 +34,7 @@
             <Font name="System Bold Italic" size="21.0" />
          </font>
       </Button>
-      <Button layoutX="388.0" layoutY="373.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300;" text="&gt;">
+      <Button layoutX="405.0" layoutY="373.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300;" text="&gt;">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
@@ -51,5 +50,6 @@
          </font>
       </Button>
       <ComboBox fx:id="selectPlayer" layoutX="41.0" layoutY="53.0" prefWidth="150.0" />
+      <Label fx:id="pages" layoutX="364.0" layoutY="387.0" text="1" />
    </children>
 </Pane>

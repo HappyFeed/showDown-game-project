@@ -7,8 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.StageStyle;
+import model.Game;
 
 public class SelectCharacterController {
 
@@ -67,13 +72,61 @@ public class SelectCharacterController {
     private Button back;
 
     @FXML
-    private ComboBox<?> selectPlayer;
+    private Button nextPage;
 
+    @FXML
+    private Button backPage;
+    
+    @FXML
+    private Button saveButton;
+    
+    @FXML
+    private TextField namePlayers;
+    
+    @FXML
+    private Label selectPlayer;
+
+    private Game g;
+
+    public void recibirGame(Game newGame) {
+    	g= newGame;
+    }
+    
+    @FXML
+    void initialize() {
+    	selectPlayer.setText("1");
+    	next.setVisible(false);
+    }
+    
+    @FXML
+    void savePlayers(ActionEvent event) {   	
+    	if(g.addPlayer(namePlayers.getText(), "")==true) {
+        	Alert score = new Alert(AlertType.INFORMATION);
+            score.setTitle("FinalFinal5EnElProyecto-Game");
+            score.initStyle(StageStyle.DECORATED);
+            score.setContentText("Saved");
+            score.show();
+            namePlayers.setText("");
+            selectPlayer.setText("2");
+            if(g.getFirstPlayer().getNextPlayer()!=null) {
+                saveButton.setVisible(false);
+            	next.setVisible(true);
+            	namePlayers.setVisible(false);	
+            	selectPlayer.setText("Not more");
+            }
+    	}        
+    }
+    
     @FXML
     void backPage(ActionEvent event) {
 
     }
 
+    @FXML
+    void nextPage(ActionEvent event) {
+
+    }
+    
     @FXML
     void backToStage(ActionEvent event) {
     	
@@ -92,21 +145,17 @@ public class SelectCharacterController {
 
     }
 
-    @FXML
-    void nextPage(ActionEvent event) {
 
-    }
 
     @FXML
     void nextToStage(ActionEvent event) {
-    	
-    	Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("SelectTeam.fxml"));
+			FXMLLoader loader= new FXMLLoader(getClass().getResource("SelectTeam.fxml"));
+			Parent root=loader.load();
+			SelectTeamController stc= (SelectTeamController) loader.getController();
+	    	stc.setPlayers(g.getFirstPlayer());
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
-		
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
