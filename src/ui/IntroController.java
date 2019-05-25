@@ -28,7 +28,7 @@ public class IntroController{
 	     mediaPlayer.setAutoPlay(true);
 	     
 	     Duration time= new Duration(10000);
-	     Duration timeToStop= new Duration(30000);
+	     Duration timeToStop= new Duration(13000);
 	     mediaPlayer.setStartTime(time);
 	     mediaPlayer.setStopTime(timeToStop); 
 

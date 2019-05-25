@@ -60,6 +60,8 @@ public class MenuController {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
 		}
     	return savedGames;
     }

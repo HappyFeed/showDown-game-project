@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import ui.Main;
 
 public class IntroThread extends Thread {
 
@@ -20,10 +20,9 @@ public class IntroThread extends Thread {
 	@Override
 	public void run() {
         try {
-        	Stage stage= new Stage();
-
-        	Parent root=FXMLLoader.load(getClass().getResource("/fxml/Intro.fxml"));
-            Parent roota=FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+        	
+        	Parent root=FXMLLoader.load(getClass().getResource("Intro.fxml"));
+            Parent roota=FXMLLoader.load(getClass().getResource("Menu.fxml"));
 
             Scene scene1= new Scene(root);
             Scene scene= new Scene(roota);
@@ -31,19 +30,19 @@ public class IntroThread extends Thread {
                 @Override
                 public void handle(MouseEvent clicked) {
                     if(clicked.getClickCount() == 1) {
-                        stage.setScene(scene);
+                        Main.stage.setScene(scene);
                         
                     }
                 }
             });
-    		stage.setTitle("Pokemon Showdown v2");
-    		stage.setScene(scene1);
-    		stage.getIcons().add(new Image("ui/icono.png"));
-    		stage.show();
+    		Main.stage.setTitle("Pokemon Showdown v2");
+    		Main.stage.setScene(scene1);
+    		Main.stage.getIcons().add(new Image("ui/icono.png"));
+    		Main.stage.show();
 			
-			sleep(3000);
+			sleep(4000);
 			
-			stage.setScene(scene);
+			Main.stage.setScene(scene);
 
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();

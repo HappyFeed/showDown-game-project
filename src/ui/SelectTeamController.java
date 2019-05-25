@@ -82,6 +82,8 @@ public class SelectTeamController {
 
     private Player players;
     
+    
+    
     public List<Button> addButtons() {
     	List<Button> l= new ArrayList<Button>();
     	l.add(pokemon1);
@@ -120,6 +122,10 @@ public class SelectTeamController {
     			System.out.println("Entro");
     	    	for (int i = (16*j); i <16+(16*j) && i<pokemons.size(); i++) {
     	    		b.get(i).setText(pokemons.get(i).getName());
+    	    		System.out.println(pokemons.get(i).getName());
+    	    		Image img = pokemons.get(i).getImg();    	    		
+                    b.get(i).setGraphic(new ImageView(img));
+
     		    }
     	    }
 		}
@@ -147,7 +153,7 @@ public class SelectTeamController {
     }
     
     public void clearData() {
-    	List<Button>b=addButtons();
+    	List<Button> b=addButtons();
     	for(int i=0;i<b.size();i++) {
     		b.get(i).setText("");
     	}
@@ -259,4 +265,8 @@ public class SelectTeamController {
 
     }
     
+    public void initialize() {
+    	showInformation(players.inOrder());
+    	
+    }
 }
