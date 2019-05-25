@@ -2,13 +2,14 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.image.Image;
 
@@ -149,5 +150,18 @@ public class Player implements Serializable{
 			}
 			
 		}
+	}
+	
+	public List<Pokemon> inOrder(){
+		return inOrder(rootPokemons);
+	}
+	private List<Pokemon> inOrder(Pokemon r){
+		List<Pokemon>l= new ArrayList<Pokemon>();
+		if(r!=null) {
+			inOrder(r.getLeft());
+			l.add(r);
+			inOrder(r.getRight());
+		}
+		return l;
 	}
 }

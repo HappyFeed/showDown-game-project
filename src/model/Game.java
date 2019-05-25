@@ -26,13 +26,11 @@ public class Game implements Serializable{
 	    		Player fl = new Player(name,profilePicture);
 	    		if(firstPlayer == null) {
 	    			firstPlayer = fl;
-	    			System.out.println(fl.getName()+"Root");
 	    		}else {
 	    			Player current = firstPlayer;
 	    			if(current.getNextPlayer()==null) {
 		    			current.setNextPlayer(fl);
 		    			fl.setPrevPlayer(current);
-		    			System.out.println(fl.getName()+"NEXT");
 	    			}else {
 	    				playerAdd=false;
 	    			}

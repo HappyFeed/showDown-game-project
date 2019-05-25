@@ -1,6 +1,8 @@
 package ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,12 +11,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import model.Game;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Player;
+import model.Pokemon;
 
 
 public class SelectTeamController {
 
+	@FXML
+	private Label pages;
+	
     @FXML
     private Button pokemon1;
 
@@ -74,39 +82,86 @@ public class SelectTeamController {
 
     private Player players;
     
+    public List<Button> addButtons() {
+    	List<Button> l= new ArrayList<Button>();
+    	l.add(pokemon1);
+    	l.add(pokemon2);
+    	l.add(pokemon3);
+    	l.add(pokemon4);
+    	l.add(pokemon5);
+    	l.add(pokemon6);
+    	l.add(pokemon7);
+    	l.add(pokemon8);
+    	l.add(pokemon9);
+    	l.add(pokemon10);
+    	l.add(pokemon11);
+    	l.add(pokemon12);
+    	l.add(pokemon13);
+    	l.add(pokemon14);
+    	l.add(pokemon15);
+    	l.add(pokemon16);
+    	return l;
+    }
+    
     public void setPlayers(Player p) {
     	players=p;
-    	try {
-			players.loadPokemons();
-		} catch (IOException e) {
-			e.printStackTrace();
+    }
+    
+    public void showInformation(List<Pokemon> pokemons) {
+    	int pagesN=(pokemons.size()/16);
+    	List<Button>b=addButtons();
+    	if(pokemons.size()%16>0) {
+    		pagesN+=1;
+    	}
+    	for(int j=0;j<pagesN;j++){
+    		if(j+1==Integer.parseInt(pages.getText())){
+    	    	for (int i = (16*j); i <16+(16*j) && i<pokemons.size(); i++) {
+    	    		System.out.println(pokemons.get(i).getName());
+    	    		Image img=pokemons.get(i).getChampPic();
+    	    		ImageView iv= new ImageView();
+    	    		iv.setImage(img);
+                    b.get(i).setGraphic(iv);
+    		    }
+    	    }
 		}
     }
     
     @FXML
     void backPage(ActionEvent event) {
-
-    }
-
-    @FXML
-    void backToStage(ActionEvent event) {
-    	
-    	Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("SelectCharacter.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+        int newPage= Integer.parseInt(pages.getText())-1;
+        if(newPage>0) {
+        	pages.setText(newPage+"");
+        	clearData();
+        	showInformation(players.inOrder());
+        }
     }
 
     @FXML
     void nextPage(ActionEvent event) {
-
+    	List<Pokemon> l=players.inOrder();
+    	int newPage= Integer.parseInt(pages.getText())+1;
+        if(newPage<(l.size()/16)+2) {
+        	pages.setText(newPage+"");
+        	clearData();
+        	showInformation(players.inOrder());
+        }
+    }
+    
+    public void clearData() {
+    	List<Button>b=addButtons();
+    	for(int i=0;i<b.size();i++) {
+    		b.get(i).setGraphic(null);
+    	}
+    }
+    @FXML
+    void backToStage(ActionEvent event) {
+       	try {
+    			players.loadPokemons();
+    			List<Pokemon> l=players.inOrder();
+    			showInformation(l);
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
     }
 
     @FXML

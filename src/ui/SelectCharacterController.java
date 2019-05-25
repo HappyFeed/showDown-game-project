@@ -150,7 +150,7 @@ public class SelectCharacterController {
     @FXML
     void nextToStage(ActionEvent event) {
 		try {
-			FXMLLoader loader= new FXMLLoader(getClass().getResource("SelectCharacter.fxml"));
+			FXMLLoader loader= new FXMLLoader(getClass().getResource("SelectTeam.fxml"));
 			Parent root=loader.load();
 			SelectTeamController stc= (SelectTeamController) loader.getController();
 	    	stc.setPlayers(g.getFirstPlayer());
