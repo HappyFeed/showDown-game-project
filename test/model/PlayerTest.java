@@ -12,5 +12,11 @@ class PlayerTest {
 	void setUp1() throws ClassNotFoundException, IOException {
 		 gm=new Player("alejandro","");
 	}
+	@Test
+	void loadTest() throws IOException, ClassNotFoundException {
+		setUp1();
+        gm.loadPokemons();
+        assertTrue("jisus",gm.getRootPokemon()!=null);
+	}
 	
 }

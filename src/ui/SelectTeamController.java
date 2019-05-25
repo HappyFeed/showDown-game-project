@@ -108,19 +108,18 @@ public class SelectTeamController {
     }
     
     public void showInformation(List<Pokemon> pokemons) {
+    	System.out.println(pokemons.size());
     	int pagesN=(pokemons.size()/16);
     	List<Button>b=addButtons();
     	if(pokemons.size()%16>0) {
     		pagesN+=1;
     	}
+    	System.out.println(pagesN);
     	for(int j=0;j<pagesN;j++){
     		if(j+1==Integer.parseInt(pages.getText())){
+    			System.out.println("Entro");
     	    	for (int i = (16*j); i <16+(16*j) && i<pokemons.size(); i++) {
-    	    		System.out.println(pokemons.get(i).getName());
-    	    		Image img=pokemons.get(i).getChampPic();
-    	    		ImageView iv= new ImageView();
-    	    		iv.setImage(img);
-                    b.get(i).setGraphic(iv);
+    	    		b.get(i).setText(pokemons.get(i).getName());
     		    }
     	    }
 		}
@@ -150,7 +149,7 @@ public class SelectTeamController {
     public void clearData() {
     	List<Button>b=addButtons();
     	for(int i=0;i<b.size();i++) {
-    		b.get(i).setGraphic(null);
+    		b.get(i).setText("");
     	}
     }
     @FXML
