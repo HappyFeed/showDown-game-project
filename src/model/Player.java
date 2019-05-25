@@ -4,13 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.List;
-
 import javafx.scene.image.Image;
 
 @SuppressWarnings("serial")
@@ -124,6 +119,7 @@ public class Player implements Serializable{
 			Pokemon nPokemon = new Pokemon(parts[0],null,Type.Fire,Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]),Double.parseDouble(parts[6]),Double.parseDouble(parts[7]),Double.parseDouble(parts[8]));
 			addPokemonsToTree(nPokemon);
 			line = br.readLine();
+
 		}
 		fileReader.close();
 		br.close();
@@ -180,15 +176,15 @@ public class Player implements Serializable{
 		}
 		return current;
 	}
-	public List<Pokemon> inOrder(){
+	public ArrayList<Pokemon> inOrder(){
 		return inOrder(rootPokemons);
 	}
-	private List<Pokemon> inOrder(Pokemon r){
-		List<Pokemon>l= new ArrayList<Pokemon>();
-		if(r!=null) {
-			inOrder(r.getLeft());
+	private ArrayList<Pokemon> inOrder(Pokemon r){
+		ArrayList<Pokemon>l= new ArrayList<Pokemon>();
+		if(r!=null) {			
+			l.addAll(inOrder(r.getLeft()));
 			l.add(r);
-			inOrder(r.getRight());
+			l.addAll(inOrder(r.getRight()));
 		}
 		return l;
 	}

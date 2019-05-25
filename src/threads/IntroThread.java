@@ -14,12 +14,7 @@ public class IntroThread extends Thread {
 
 	public IntroThread() {
 	
-		
-	}
-	
-	@Override
-	public void run() {
-        try {
+        /*try {
         	
         	Parent root=FXMLLoader.load(getClass().getResource("Intro.fxml"));
             Parent roota=FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -46,7 +41,12 @@ public class IntroThread extends Thread {
 
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
+	}
+	
+	@Override
+	public void run() {
+
 
 		
 	}
