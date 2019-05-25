@@ -13,7 +13,7 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		
 	    //Attributes
 	    private String name;
-		private Image champPic;
+		private Image img;
 		private Type k;
 		private double baseLife;
 		private double basicAtack;
@@ -35,7 +35,7 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 				double especialAtack, double especialDefense, double speed) {
 			super();
 			this.name = name;
-			this.champPic = champPic;
+			this.img = champPic;
 			this.k = k;
 			this.baseLife = baseLife;
 			this.basicAtack = basicAtack;
@@ -57,13 +57,13 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		}
 
 
-		public Image getChampPic() {
-			return champPic;
+		public Image getImg() {
+			return img;
 		}
 
 
 		public void setChampPic(Image champPic) {
-			this.champPic = champPic;
+			this.img = champPic;
 		}
 
 
