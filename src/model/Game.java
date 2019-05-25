@@ -26,29 +26,18 @@ public class Game implements Serializable{
 	    		Player fl = new Player(name,profilePicture);
 	    		if(firstPlayer == null) {
 	    			firstPlayer = fl;
+	    			System.out.println(fl.getName()+"Root");
 	    		}else {
 	    			Player current = firstPlayer;
-	    			if(sizePlayers()<2) {
-		    			while(current.getNextPlayer() != null) {
-		    				current = current.getNextPlayer();
-		    			}
+	    			if(current.getNextPlayer()==null) {
 		    			current.setNextPlayer(fl);
 		    			fl.setPrevPlayer(current);
+		    			System.out.println(fl.getName()+"NEXT");
 	    			}else {
 	    				playerAdd=false;
 	    			}
-
 	    		}
 	    		return playerAdd;
-		}
-		
-		public int sizePlayers() {
-			int size=0;
-			while(firstPlayer!=null) {
-				size++;
-				firstPlayer=firstPlayer.getNextPlayer();
-			}
-			return size;
 		}
 		
 		public Player searchOficialParticipant(String n) {
@@ -66,5 +55,4 @@ public class Game implements Serializable{
 			
 			return returned;
 		}
-
 }

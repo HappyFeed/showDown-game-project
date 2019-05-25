@@ -6,11 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 
-public class Pokemon implements Serializable{
+import javafx.scene.image.Image;
+
+@SuppressWarnings("serial")
+public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		
 	    //Attributes
 	    private String name;
-		private String champPic;
+		private Image champPic;
 		private Type k;
 		private double baseLife;
 		private double basicAtack;
@@ -21,12 +24,14 @@ public class Pokemon implements Serializable{
 		
 		private Pokemon next;
 		private Pokemon prev;
+		private Pokemon left;
+		private Pokemon right;
 		
 		//Relations
 		private Skill[] skills;
 		
 		//Methods	
-		public Pokemon(String name, String champPic, Type k, double baseLife, double basicAtack, double basicDefense,
+		public Pokemon(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense,
 				double especialAtack, double especialDefense, double speed) {
 			super();
 			this.name = name;
@@ -52,12 +57,12 @@ public class Pokemon implements Serializable{
 		}
 
 
-		public String getChampPic() {
+		public Image getChampPic() {
 			return champPic;
 		}
 
 
-		public void setChampPic(String champPic) {
+		public void setChampPic(Image champPic) {
 			this.champPic = champPic;
 		}
 
@@ -160,7 +165,26 @@ public class Pokemon implements Serializable{
 			this.prev = prev;
 		}
 
+		public Pokemon getLeft() {
+			return left;
+		}
 
+
+		public void setLeft(Pokemon left) {
+			this.left = left;
+		}
+
+
+		public Pokemon getRight() {
+			return right;
+		}
+
+
+		public void setRight(Pokemon right) {
+			this.right = right;
+		}
+		
+		
 		public void assignSkills() throws IOException
 		    {   
 		    	for(int i=0;i<4;i++) {
@@ -183,5 +207,20 @@ public class Pokemon implements Serializable{
 		        }
 
 		    }
+
+
+		@Override
+		public int compareTo(Pokemon p) {
+			int comparation;
+			
+			if(name.compareTo(p.name)<0) {
+				comparation = -1;
+			}else if(name.compareTo(p.name)>0) {
+				comparation =1;
+			}else {
+				comparation = 0;
+			}
+			return comparation;
+		}
 		
 }

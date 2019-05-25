@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import model.Game;
+import model.Player;
 
 
 public class SelectTeamController {
@@ -68,8 +70,19 @@ public class SelectTeamController {
     private Button back;
 
     @FXML
-    private ComboBox<?> selectPlayer;
+    private ComboBox<String> selectPlayer;
 
+    private Player players;
+    
+    public void setPlayers(Player p) {
+    	players=p;
+    	try {
+			players.loadPokemons();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
     @FXML
     void backPage(ActionEvent event) {
 
@@ -191,5 +204,5 @@ public class SelectTeamController {
     void selectThisPokemon9(ActionEvent event) {
 
     }
-
+    
 }
