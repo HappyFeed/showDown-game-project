@@ -3,11 +3,11 @@ package model;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Skill implements Serializable, Comparable<Skill>{
+public abstract class Skill implements Serializable, Comparable<Skill>{
      
 	private String skillName;
 	private String description;
-	private double skillPower;
+	
 	
 	private Skill left;
 	private Skill right;
@@ -15,11 +15,10 @@ public class Skill implements Serializable, Comparable<Skill>{
     
 
 	//Methods
-	public Skill(String skillName, String description, double skillPower) {
-		super();
+	public Skill(String skillName, String description) {
 		this.skillName = skillName;
 		this.description = description;
-		this.skillPower = skillPower;
+
 	}
 
 	public String getSkillName() {
@@ -36,14 +35,6 @@ public class Skill implements Serializable, Comparable<Skill>{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public double getSkillPower() {
-		return skillPower;
-	}
-
-	public void setSkillPower(double skillPower) {
-		this.skillPower = skillPower;
 	}
 	
 	public Skill getLeft() {
@@ -66,9 +57,9 @@ public class Skill implements Serializable, Comparable<Skill>{
 	public int compareTo(Skill p) {
 		int comparation;
 		
-		if(skillPower<p.skillPower) {
+		if(skillName.compareTo(p.skillName)<0) {
 			comparation = -1;
-		}else if(skillPower>p.skillPower) {
+		}else if(skillName.compareTo(p.skillName)>0) {
 			comparation =1;
 		}else {
 			comparation = 0;
