@@ -115,6 +115,7 @@ public class SelectTeamController {
 		}
 
     }
+
     
 
     public void showInformation(List<Pokemon> pokemons) {
@@ -140,6 +141,7 @@ public class SelectTeamController {
     	}
     }
 
+
     public void showInformation() throws IOException {
 	   	ArrayList<Pokemon> rootPokemon= players.inOrder();
     	int pagesN=(rootPokemon.size()/16);
@@ -156,17 +158,17 @@ public class SelectTeamController {
     	    				b.get(bottonN).setText(rootPokemon.get(i).getName());
     	    				 b.get(bottonN).setGraphic(new ImageView(rootPokemon.get(i).getImg()));
     	    				System.out.println(rootPokemon.get(i).getName()+i);
+
+    	    				b.get(bottonN).setText(rootPokemon.get(i).getName());  
+
     	    				bottonN++;
     	    				if(bottonN>=b.size()) {
     	    					bottonN=0;
     	    				}
+    	    				
     	    			}else {
     	    				b.get(i).setText(rootPokemon.get(i).getName());
-    	    				System.out.println(rootPokemon.get(i).getName()+i);
     	    			}
-    	    			
-    	    			
-
     		    }
     	    	flag=false;
     	    }

@@ -29,7 +29,7 @@
       <Button fx:id="character14" layoutX="455.0" layoutY="236.0" mnemonicParsing="false" onAction="#selectThisCharacter14" prefHeight="80.0" prefWidth="53.0" />
       <Button fx:id="character15" layoutX="533.0" layoutY="236.0" mnemonicParsing="false" onAction="#selectThisCharacter15" prefHeight="80.0" prefWidth="53.0" />
       <Button fx:id="character16" layoutX="606.0" layoutY="236.0" mnemonicParsing="false" onAction="#selectThisCharacter16" prefHeight="80.0" prefWidth="53.0" />
-      <Button fx:id="backPage" layoutX="303.0" layoutY="373.0" mnemonicParsing="false" onAction="#backPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300;" text="&lt;">
+      <Button fx:id="backPage" layoutX="294.0" layoutY="373.0" mnemonicParsing="false" onAction="#backPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300;" text="&lt;">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
@@ -53,5 +53,6 @@
       <Button fx:id="saveButton" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#savePlayers" prefHeight="25.0" prefWidth="81.0" text="Save" />
       <Label fx:id="selectPlayer" layoutX="77.0" layoutY="43.0" prefHeight="17.0" prefWidth="33.0" />
       <Label layoutX="34.0" layoutY="43.0" prefHeight="17.0" prefWidth="43.0" text="Player:" />
+      <Label fx:id="pages" layoutX="361.0" layoutY="387.0" prefHeight="17.0" prefWidth="13.0" text="1" />
    </children>
 </Pane>
