@@ -1,7 +1,5 @@
 package ui;
 
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,7 +10,6 @@ import javafx.scene.shape.Rectangle;
 
 public class MatchController {
 
-	private MenuController mc;
 	
     @FXML
     private Circle poke6;
@@ -152,11 +149,7 @@ public class MatchController {
 
     @FXML
     void saveGame(ActionEvent event) {
-    	try {
-			mc.save();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
     }
 
     @FXML
@@ -188,9 +181,5 @@ public class MatchController {
     void switchPoke6(ActionEvent event) {
 
     }
-
-    @FXML
-    void initialize() {
-    	mc= new MenuController();
-    }	
+	
 }

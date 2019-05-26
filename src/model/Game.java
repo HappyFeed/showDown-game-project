@@ -3,6 +3,10 @@ package model;
 
 import java.io.Serializable;
 
+import customeExceptions.BigNameException;
+import customeExceptions.NoDataException;
+import javafx.scene.image.Image;
+
 @SuppressWarnings("serial")
 public class Game implements Serializable{
 
@@ -21,24 +25,31 @@ public class Game implements Serializable{
 		}
 		
         
-		public boolean addPlayer(String name, String profilePicture) {
+		public boolean addPlayer(String name, String profilePicture)throws BigNameException,NoDataException {
 	            boolean playerAdd=true;
-	    		Player fl = new Player(name,profilePicture);
-	    		if(firstPlayer == null) {
-	    			firstPlayer = fl;
-	    		}else {
-	    			Player current = firstPlayer;
-	    			if(current.getNextPlayer()==null) {
-		    			current.setNextPlayer(fl);
-		    			fl.setPrevPlayer(current);
-	    			}else {
-	    				playerAdd=false;
-	    			}
-	    		}
+	            if(name=="" ||profilePicture==null) {
+	            	Image img= new Image(profilePicture);
+	            	throw new NoDataException(name,img);
+	            }else if(name.length()>10) {
+	            	throw new BigNameException(name.length());
+	            }else {
+	            	Player fl = new Player(name,profilePicture);
+		    		if(firstPlayer == null) {
+		    			firstPlayer = fl;
+		    		}else {
+		    			Player current = firstPlayer;
+		    			if(current.getNextPlayer()==null) {
+			    			current.setNextPlayer(fl);
+			    			fl.setPrevPlayer(current);
+		    			}else {
+		    				playerAdd=false;
+		    			}
+		    		}
+	            }	    		
 	    		return playerAdd;
 		}
 		
-		public Player searchOficialParticipant(String n) {
+		public Player searchPlayer(String n) {
 			Player current = firstPlayer;
 			Player returned = null;
 			boolean stop = false;

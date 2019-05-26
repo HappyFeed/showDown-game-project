@@ -2,6 +2,8 @@ package ui;
 
 import java.io.IOException;
 
+import customeExceptions.BigNameException;
+import customeExceptions.NoDataException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,21 +102,37 @@ public class SelectCharacterController {
     
     @FXML
     void savePlayers(ActionEvent event) {   	
-    	if(g.addPlayer(namePlayers.getText(), "")==true) {
-        	Alert score = new Alert(AlertType.INFORMATION);
-            score.setTitle("FinalFinal5EnElProyecto-Game");
-            score.initStyle(StageStyle.DECORATED);
-            score.setContentText("Saved");
-            score.show();
-            namePlayers.setText("");
-            selectPlayer.setText("2");
-            if(g.getFirstPlayer().getNextPlayer()!=null) {
-                saveButton.setVisible(false);
-            	next.setVisible(true);
-            	namePlayers.setVisible(false);	
-            	selectPlayer.setText("Not more");
-            }
-    	}        
+    	try {
+			if(g.addPlayer(namePlayers.getText(), "")==true) {
+				Alert score = new Alert(AlertType.INFORMATION);
+			    score.setTitle("FinalFinal5EnElProyecto-Game");
+			    score.initStyle(StageStyle.DECORATED);
+			    score.setContentText("Saved");
+			    score.show();
+			    namePlayers.setText("");
+			    selectPlayer.setText("2");
+			    if(g.getFirstPlayer().getNextPlayer()!=null) {
+			        saveButton.setVisible(false);
+			    	next.setVisible(true);
+			    	namePlayers.setVisible(false);	
+			    	selectPlayer.setText("Not more");
+			    }
+			}
+		} catch (BigNameException bne ) {
+			Alert score = new Alert(AlertType.ERROR);
+		    score.setTitle("FinalFinal5EnElProyecto-Game");
+		    score.initStyle(StageStyle.DECORATED);
+		    score.setContentText(bne.getMessage());
+		    score.show();
+		    namePlayers.setText("");			
+		}catch(NoDataException nde) {
+			Alert score = new Alert(AlertType.ERROR);
+		    score.setTitle("FinalFinal5EnElProyecto-Game");
+		    score.initStyle(StageStyle.DECORATED);
+		    score.setContentText(nde.getMessage());
+		    score.show();
+		    namePlayers.setText("");			
+		}
     }
     
     @FXML
