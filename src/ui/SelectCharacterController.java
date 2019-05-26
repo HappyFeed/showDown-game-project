@@ -1,6 +1,14 @@
 package ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 import customeExceptions.BigNameException;
 import customeExceptions.NoDataException;
@@ -14,11 +22,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.stage.StageStyle;
 import model.Game;
 
 public class SelectCharacterController {
 
+	 private ArrayList<Image> avatars;
+	 public static final String PATH = "pic/avatars.csv";
+	
     @FXML
     private Button character1;
 
@@ -87,16 +104,20 @@ public class SelectCharacterController {
     
     @FXML
     private Label selectPlayer;
+    
+    @FXML
+    private Label pages;
 
     private Game g;
-
-    public void recibirGame(Game newGame) {
+    
+    public void recibirGame(Game newGame) throws IOException {
     	g= newGame;
+    	loadAvatars();
+    	showAvatars();
     }
     
     @FXML
     void initialize() {
-    	selectPlayer.setText("1");
     	next.setVisible(false);
     }
     
@@ -136,13 +157,23 @@ public class SelectCharacterController {
     }
     
     @FXML
-    void backPage(ActionEvent event) {
-
+    void backPage(ActionEvent event) throws IOException {
+        int newPage= Integer.parseInt(pages.getText())-1;
+        if(newPage>0) {
+        	pages.setText(newPage+"");
+        	clearData();
+        	showAvatars();
+        }
     }
 
     @FXML
-    void nextPage(ActionEvent event) {
-
+    void nextPage(ActionEvent event) throws IOException {
+    	int newPage= Integer.parseInt(pages.getText())+1;
+        if(newPage<(50/16)+2) {
+        	pages.setText(newPage+"");
+        	clearData();
+        	showAvatars();
+        }
     }
     
     @FXML
@@ -183,7 +214,7 @@ public class SelectCharacterController {
 
     @FXML
     void selectThisCharacter1(ActionEvent event) {
-
+    	System.out.println("si");
     }
 
     @FXML
@@ -260,6 +291,92 @@ public class SelectCharacterController {
     void selectThisCharacter9(ActionEvent event) {
 
     }
-
+	public void loadAvatars() throws IOException {
+		File file = new File(PATH);
+		 avatars= new ArrayList<Image>();
+		FileReader fileReader = new FileReader(file);
+		BufferedReader br = new BufferedReader(fileReader);
+		String line = br.readLine();
+		line = br.readLine();
+		while(line != null){
+			String[] parts = line.split(",");
+			URL url = new URL(parts[0]);
+			URLConnection conn = url.openConnection();
+			InputStream in = conn.getInputStream();
+			Image img = new Image(in);	
+			avatars.add(img);
+			line = br.readLine();
+		}
+		fileReader.close();		
+		br.close();
+	
+	}
+    public void showAvatars() throws IOException {
+    	List<Button>b=addButtons();
+    	int pagesN=avatars.size()/16;
+    	if(avatars.size()%16>0) {
+    		pagesN+=1;
+    	}
+    	Boolean flag=true;
+    	for(int j=0;j<pagesN&&flag;j++){    	
+    		if(j+1==Integer.parseInt(pages.getText())){    
+    	    	int bottonN=0;
+    			for (int i = (16*j); i <16+(16*j) && i<avatars.size(); i++) {
+    	    			if(i>=b.size()) {
+    	    				b.get(bottonN).setVisible(true);
+    	    				b.get(bottonN).setBackground(new Background(new BackgroundImage(avatars.get(i),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));  
+    	    				bottonN++;
+    	    				if(bottonN>=b.size()) {
+    	    					bottonN=0;
+    	    				}
+    	    				
+    	    			}else {
+    	    				b.get(i).setVisible(true);
+    	    				b.get(i).setBackground(new Background(new BackgroundImage(avatars.get(i),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT))); 
+    	    			}
+    		    }
+    	    	flag=false;
+    	    }
+		}
+    }
+    public void clearData() {
+    	character1.setVisible(false);
+    	character2.setVisible(false);
+    	character3.setVisible(false);
+    	character4.setVisible(false);
+    	character5.setVisible(false);
+    	character6.setVisible(false);
+    	character7.setVisible(false);
+    	character8.setVisible(false);
+    	character9.setVisible(false);
+    	character10.setVisible(false);
+    	character11.setVisible(false);
+    	character12.setVisible(false);
+    	character13.setVisible(false);
+    	character14.setVisible(false);
+    	character15.setVisible(false);
+    	character16.setVisible(false);
+    }
+    public List<Button> addButtons() {
+    	List<Button> l= new ArrayList<Button>();
+    	l.add(character1);
+    	l.add(character2);
+    	l.add(character3);
+    	l.add(character4);
+    	l.add(character5);
+    	l.add(character6);
+    	l.add(character7);
+    	l.add(character8);
+    	l.add(character9);
+    	l.add(character10);
+    	l.add(character11);
+    	l.add(character12);
+    	l.add(character13);
+    	l.add(character14);
+    	l.add(character15);
+    	l.add(character16);
+    	return l;
+    }
+    
 }
 

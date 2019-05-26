@@ -113,25 +113,6 @@ public class SelectTeamController {
 		}
 
     }
-    
-
-    public void showInformation(List<Pokemon> pokemons) {
-    	int pagesN=(pokemons.size()/16);
-    	List<Button> buttons = addButtons();
-    	if(pokemons.size()%16>0) {
-    		pagesN+=1;
-    	}
-    	for(int j=0;j<pagesN;j++){
-    		if(j+1==Integer.parseInt(pages.getText())){
-    	    	for (int i = (16*j); i <16+(16*j) && i<pokemons.size(); i++) {
-    	    		
-    	    		
-    	    		//Image img = pokemons.get(i).getImg();
-    	    	/*	Image img=new Image(getClass().getResource("ui/icono.png").toString());
-    	    		if(img!=null) {
-                    buttons.get(j).setGraphic(new ImageView(img));
-                    System.out.println("izi");*/
-    	    		}}}}
 
     public void showInformation() throws IOException {
 	   	ArrayList<Pokemon> rootPokemon= players.inOrder();
@@ -147,18 +128,14 @@ public class SelectTeamController {
     			for (int i = (16*j); i <16+(16*j) && i<rootPokemon.size(); i++) {
     	    			if(i>=b.size()) {
     	    				b.get(bottonN).setText(rootPokemon.get(i).getName());  
-    	    				System.out.println(rootPokemon.get(i).getName()+i);
     	    				bottonN++;
     	    				if(bottonN>=b.size()) {
     	    					bottonN=0;
     	    				}
+    	    				
     	    			}else {
     	    				b.get(i).setText(rootPokemon.get(i).getName());
-    	    				System.out.println(rootPokemon.get(i).getName()+i);
     	    			}
-    	    			
-    	    			
-
     		    }
     	    	flag=false;
     	    }
