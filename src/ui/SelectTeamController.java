@@ -111,7 +111,7 @@ public class SelectTeamController {
     
     public void showInformation(List<Pokemon> pokemons) {
     	int pagesN=(pokemons.size()/16);
-    	List<Button>b=addButtons();
+    	List<Button> buttons = addButtons();
     	if(pokemons.size()%16>0) {
     		pagesN+=1;
     	}
@@ -119,9 +119,12 @@ public class SelectTeamController {
     		if(j+1==Integer.parseInt(pages.getText())){
     	    	for (int i = (16*j); i <16+(16*j) && i<pokemons.size(); i++) {
     	    		System.out.println(pokemons.get(i).getName());
-    	    		Image img = pokemons.get(i).getImg();
-    	    		
-                    b.get(i).setGraphic(new ImageView(img));
+    	    		//Image img = pokemons.get(i).getImg();
+    	    		Image img=new Image(getClass().getResource("ui/icono.png").toString());
+    	    		if(img!=null) {
+                    buttons.get(j).setGraphic(new ImageView(img));
+                    System.out.println("izi");
+    	    		}
     		    }
     	    }
 		}
@@ -261,8 +264,4 @@ public class SelectTeamController {
 
     }
     
-    public void initialize() {
-    	showInformation(players.inOrder());
-    	
-    }
 }
