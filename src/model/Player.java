@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import customeExceptions.BigTeamException;
 import javafx.scene.image.Image;
 
 @SuppressWarnings("serial")
@@ -73,35 +75,42 @@ public class Player implements Serializable{
 	public Pokemon getRootPokemon() {
 		return rootPokemons;
 	}
-	public boolean addPokemonLinkedList(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) {
+	public int addPokemonLinkedList(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) throws BigTeamException  {
 		Pokemon p= new Pokemon(name, champPic, k, baseLife, basicAtack, basicDefense, especialAtack, especialDefense, speed);
-        boolean pokemonAdd=true;
+        int pokemonAdd=0;
 		if(team == null) {
 			team = p;
 			team.setPrevPokemon(p);
 			team.setNextPokemon(p);
+			pokemonAdd++;
 		}else {
 			Pokemon current = team;
-			if(sizeTeam()<6) {				
+			if(sizeTeam()) {
     			current.setNextPokemon(p);
     			p.setPrevPokemon(current);
     			p.setNextPokemon(team);
-    			team.setPrevPokemon(p);
-			}else {
-				pokemonAdd=false;
+    			team.setPrevPokemon(p);	
+    			pokemonAdd++;
+			}else if(!sizeTeam()) {
+				throw new BigTeamException();			
 			}
-
 		}
+		System.out.println(pokemonAdd);
 		return pokemonAdd;
 	}
 	
-	public int sizeTeam() {
+	public boolean sizeTeam() {
+		boolean flag=true;
 		int size=0;
-		while(team!=null) {
+		Pokemon current= team;
+		while(current.getNextPokemon()!=team) {
 			size++;
-			team=team.getNextPokemon();
+			current=team.getNextPokemon();
 		}
-		return size;
+		if(size>6) {
+			flag=false;
+		}
+		return flag;
 	}
    	
 	public void loadPokemons() throws IOException {
@@ -112,10 +121,6 @@ public class Player implements Serializable{
 		line = br.readLine();
 		while(line != null){
 			String[] parts = line.split(",");
-			/*URL url = new URL(parts[1]);
-			URLConnection conn = url.openConnection();
-			InputStream in = conn.getInputStream();
-			Image img = new Image(in);	*/
 			Pokemon nPokemon = new Pokemon(parts[0],null,Type.Fire,Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]),Double.parseDouble(parts[6]),Double.parseDouble(parts[7]),Double.parseDouble(parts[8]));
 			addPokemonsToTree(nPokemon);
 			line = br.readLine();
