@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Player;
 import model.Pokemon;
 
@@ -114,6 +116,32 @@ public class SelectTeamController {
 
     }
 
+    
+
+    public void showInformation(List<Pokemon> pokemons) {
+    	int pagesN=(pokemons.size()/16);
+    	List<Button> buttons = addButtons();
+    	if(pokemons.size()%16>0) {
+    		pagesN+=1;
+    	}
+    	for(int j=0;j<pagesN;j++){
+    		if(j+1==Integer.parseInt(pages.getText())){
+    	    	for (int i = (16*j); i <16+(16*j) && i<pokemons.size(); i++) {
+    	    		
+    	    		
+    	    		//Image img = pokemons.get(i).getImg();
+    	    		Image img=new Image(getClass().getResource("ui/icono.png").toString());
+    	    		if(img!=null) {
+                    buttons.get(j).setGraphic(new ImageView(img));
+                    System.out.println("izi");
+    	    		}
+    	    		
+    	    	}
+    		}
+    	}
+    }
+
+
     public void showInformation() throws IOException {
 	   	ArrayList<Pokemon> rootPokemon= players.inOrder();
     	int pagesN=(rootPokemon.size()/16);
@@ -127,7 +155,12 @@ public class SelectTeamController {
     	    	int bottonN=0;
     			for (int i = (16*j); i <16+(16*j) && i<rootPokemon.size(); i++) {
     	    			if(i>=b.size()) {
+    	    				b.get(bottonN).setText(rootPokemon.get(i).getName());
+    	    				 b.get(bottonN).setGraphic(new ImageView(rootPokemon.get(i).getImg()));
+    	    				System.out.println(rootPokemon.get(i).getName()+i);
+
     	    				b.get(bottonN).setText(rootPokemon.get(i).getName());  
+
     	    				bottonN++;
     	    				if(bottonN>=b.size()) {
     	    					bottonN=0;
