@@ -189,8 +189,19 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 			line = br.readLine();
 			while(line != null){
 				String[] parts = line.split(",");
-				Skill s = new Skill(parts[0],parts[1],Double.parseDouble(parts[2]));
-				addSkillsToTree(s);
+				if(parts[0].equals("1")) {
+					Skill s = new SkillDamage(parts[1],parts[2],Integer.parseInt(parts[3]),Integer.parseInt(parts[4]));
+					addSkillsToTree(s);
+				}else if(parts[0].equals("2")) {
+					Skill s = new SkillDefense(parts[1],parts[2],Integer.parseInt(parts[3]),Integer.parseInt(parts[4]));
+					addSkillsToTree(s);
+				}else if(parts[0].equals("3")) {
+					Skill s = new SkillAlteredStates(parts[1],parts[2],Integer.parseInt(parts[3]));
+					addSkillsToTree(s);
+				}else if(parts[0].equals("4")) {
+					Skill s = new SkillHealth(parts[1],parts[2],Double.parseDouble(parts[3]));
+					addSkillsToTree(s);
+				}
 				line = br.readLine();
 
 			}

@@ -13,7 +13,7 @@ public class Player implements Serializable{
 	
 	//Attributes
 	private String name;
-    private String profilePicture;
+    private Image profilePicture;
     
     private Player next;
     private Player prev;
@@ -24,7 +24,7 @@ public class Player implements Serializable{
     private Pokemon team;
     private Pokemon rootPokemons;
     
-	public Player(String name, String profilePicture) 
+	public Player(String name, Image profilePicture) 
 	{
 		this.name = name;
 		this.profilePicture = profilePicture;
@@ -41,12 +41,12 @@ public class Player implements Serializable{
 		this.name = name;
 	}
     
-	public String getProfilePicture() 
+	public Image getProfilePicture() 
 	{
 		return profilePicture;
 	}
 
-	public void setProfilePicture(String profilePicture) 
+	public void setProfilePicture(Image profilePicture) 
 	{
 		this.profilePicture = profilePicture;
 	}

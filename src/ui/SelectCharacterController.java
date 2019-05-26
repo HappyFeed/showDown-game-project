@@ -34,6 +34,7 @@ import model.Game;
 public class SelectCharacterController {
 
 	 private ArrayList<Image> avatars;
+	 private Image img;
 	 public static final String PATH = "pic/avatars.csv";
 	
     @FXML
@@ -124,7 +125,7 @@ public class SelectCharacterController {
     @FXML
     void savePlayers(ActionEvent event) {   	
     	try {
-			if(g.addPlayer(namePlayers.getText(), "")==true) {
+			if(g.addPlayer(namePlayers.getText(), img)==true) {
 				Alert score = new Alert(AlertType.INFORMATION);
 			    score.setTitle("FinalFinal5EnElProyecto-Game");
 			    score.initStyle(StageStyle.DECORATED);
@@ -214,82 +215,182 @@ public class SelectCharacterController {
 
     @FXML
     void selectThisCharacter1(ActionEvent event) {
-    	System.out.println("si");
+      if(pages.getText().equals("1")) {
+    	  img=avatars.get(0);
+      }else if(pages.getText().equals("2")) {
+    	  img=avatars.get(16);
+      }else  if(pages.getText().equals("3")){
+    	  img=avatars.get(32);
+      }else {
+    	  img=avatars.get(48);
+      }
     }
 
     @FXML
     void selectThisCharacter10(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+        	  img=avatars.get(9);
+          }else if(pages.getText().equals("2")) {
+        	  img=avatars.get(25);
+          }else {
+        	  img=avatars.get(41);
+          }
     }
 
     @FXML
     void selectThisCharacter11(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(10);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(26);
+        }else {
+      	  img=avatars.get(42);
+        }
     }
 
     @FXML
     void selectThisCharacter12(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+        	  img=avatars.get(11);
+          }else if(pages.getText().equals("2")) {
+        	  img=avatars.get(27);
+          }else {
+        	  img=avatars.get(43);
+          }
     }
 
     @FXML
     void selectThisCharacter13(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(12);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(28);
+        }else {
+      	  img=avatars.get(44);
+        }
     }
 
     @FXML
     void selectThisCharacter14(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+        	  img=avatars.get(13);
+          }else if(pages.getText().equals("2")) {
+        	  img=avatars.get(29);
+          }else {
+        	  img=avatars.get(45);
+          }
     }
 
     @FXML
     void selectThisCharacter15(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(14);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(30);
+        }else {
+      	  img=avatars.get(46);
+        }
     }
 
     @FXML
     void selectThisCharacter16(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(15);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(31);
+        }else {
+      	  img=avatars.get(47);
+        }
     }
 
     @FXML
     void selectThisCharacter2(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(1);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(17);
+        }else  if(pages.getText().equals("3")){
+      	  img=avatars.get(33);
+        }else {
+      	  img=avatars.get(49);
+        }
     }
 
     @FXML
     void selectThisCharacter3(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+        	  img=avatars.get(2);
+          }else if(pages.getText().equals("2")) {
+        	  img=avatars.get(18);
+          }else {
+        	  img=avatars.get(34);
+          }
     }
 
     @FXML
     void selectThisCharacter4(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(3);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(19);
+        }else {
+      	  img=avatars.get(35);
+        }
     }
 
     @FXML
     void selectThisCharacter5(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+        	  img=avatars.get(4);
+          }else if(pages.getText().equals("2")) {
+        	  img=avatars.get(20);
+          }else {
+        	  img=avatars.get(36);
+          }
     }
 
     @FXML
     void selectThisCharacter6(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+        	  img=avatars.get(5);
+          }else if(pages.getText().equals("2")) {
+        	  img=avatars.get(21);
+          }else {
+        	  img=avatars.get(37);
+          }
     }
 
     @FXML
     void selectThisCharacter7(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(6);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(22);
+        }else {
+      	  img=avatars.get(38);
+        }
     }
 
     @FXML
     void selectThisCharacter8(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+        	  img=avatars.get(7);
+          }else if(pages.getText().equals("2")) {
+        	  img=avatars.get(23);
+          }else {
+        	  img=avatars.get(39);
+          }
     }
 
     @FXML
     void selectThisCharacter9(ActionEvent event) {
-
+        if(pages.getText().equals("1")) {
+      	  img=avatars.get(8);
+        }else if(pages.getText().equals("2")) {
+      	  img=avatars.get(24);
+        }else {
+      	  img=avatars.get(40);
+        }
     }
 	public void loadAvatars() throws IOException {
 		File file = new File(PATH);
