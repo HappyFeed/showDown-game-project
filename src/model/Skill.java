@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Skill implements Serializable{
+public class Skill implements Serializable, Comparable<Skill>{
      
 	private String skillName;
 	private String description;
@@ -12,7 +12,7 @@ public class Skill implements Serializable{
 	private Skill left;
 	private Skill right;
 	
-
+    
 
 	//Methods
 	public Skill(String skillName, String description, double skillPower) {
@@ -60,6 +60,20 @@ public class Skill implements Serializable{
 
 	public void setRight(Skill right) {
 		this.right = right;
+	}
+	
+	@Override
+	public int compareTo(Skill p) {
+		int comparation;
+		
+		if(skillPower<p.skillPower) {
+			comparation = -1;
+		}else if(skillPower>p.skillPower) {
+			comparation =1;
+		}else {
+			comparation = 0;
+		}
+		return comparation;
 	}
 	
 }

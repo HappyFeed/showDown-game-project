@@ -28,7 +28,9 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		private Pokemon right;
 		
 		//Relations
-		private Skill[] skills;
+		private Skill rootSkills;
+		
+		public static final String PATH = "skills/Skills.csv";
 		
 		//Methods	
 		public Pokemon(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense,
@@ -43,7 +45,7 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 			this.especialAtack = especialAtack;
 			this.especialDefense = especialDefense;
 			this.speed = speed;
-			skills= new Skill[4];
+
 		}
 		
 		
@@ -137,13 +139,8 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		}
 
 
-		public Skill[] getSkills() {
-			return skills;
-		}
-
-
-		public void setSkills(Skill[] skills) {
-			this.skills = skills;
+		public Skill getSkills() {
+			return rootSkills;
 		}
 
 		public Pokemon getNextPokemon() {
@@ -184,30 +181,49 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 			this.right = right;
 		}
 		
+		public void loadSkills() throws IOException {
+			File file = new File(PATH);
+			FileReader fileReader = new FileReader(file);
+			BufferedReader br = new BufferedReader(fileReader);
+			String line = br.readLine();
+			line = br.readLine();
+			while(line != null){
+				String[] parts = line.split(",");
+				Skill s = new Skill(parts[0],parts[1],Double.parseDouble(parts[2]));
+				addSkillsToTree(s);
+				line = br.readLine();
+
+			}
+			fileReader.close();
+			br.close();
+			
+		}
 		
-		public void assignSkills() throws IOException
-		    {   
-		    	for(int i=0;i<4;i++) {
-		    		int numero = (int) (Math.random() * 1) + 1;  	
-		    		File f= new File("skills/"+k+"/"+numero);
-		        	FileReader fr= new FileReader(f);
-		        	BufferedReader br= new BufferedReader(fr);
-		        	String line=br.readLine();
-		        	while(line !=null) {
-		        	    	String[] parts=line.split(";");
-		        	    	String nameAtack=parts[0];
-		        	    	String description=parts[1];
-		        	    	double manaCost=Double.parseDouble(parts[2]);
-		        	    	Skill s= new Skill(nameAtack, description, manaCost);
-		        	    	skills[i]=s;
-		        	    	line=br.readLine();
-		        	}
-		        	br.close();
-		        	fr.close();
-		        }
-
-		    }
-
+		public void addSkillsToTree(Skill part) {
+			if(rootSkills == null) {
+				rootSkills = part;
+			}else {
+				Skill current=rootSkills;
+				Boolean flag=false;
+				while(!flag) {
+					if(current.compareTo(part)>0) {
+						if(current.getRight()!=null) {
+							current= current.getRight();
+						}else {
+							current.setRight(part);
+							flag=true;
+						}
+					}else {
+						if(current.getLeft()!=null) {
+							current=current.getLeft();
+						}else {
+							current.setLeft(part);
+							flag=true;
+						}
+					}
+				}
+			}
+		}
 
 		@Override
 		public int compareTo(Pokemon p) {

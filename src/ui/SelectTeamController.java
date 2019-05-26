@@ -157,7 +157,6 @@ public class SelectTeamController {
 
     @FXML
     void nextPage(ActionEvent event) throws IOException {
-    	ArrayList<Pokemon> rootPokemon= players.inOrder();
     	int newPage= Integer.parseInt(pages.getText())+1;
         if(newPage<(149/16)+2) {
         	pages.setText(newPage+"");
