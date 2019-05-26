@@ -2,12 +2,18 @@ package model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Skill implements Serializable{
      
 	private String skillName;
 	private String description;
 	private double skillPower;
 	
+	private Skill left;
+	private Skill right;
+	
+
+
 	//Methods
 	public Skill(String skillName, String description, double skillPower) {
 		super();
@@ -40,6 +46,20 @@ public class Skill implements Serializable{
 		this.skillPower = skillPower;
 	}
 	
-	
+	public Skill getLeft() {
+		return left;
+	}
+
+	public void setLeft(Skill left) {
+		this.left = left;
+	}
+
+	public Skill getRight() {
+		return right;
+	}
+
+	public void setRight(Skill right) {
+		this.right = right;
+	}
 	
 }
