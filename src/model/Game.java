@@ -25,11 +25,10 @@ public class Game implements Serializable{
 		}
 		
         
-		public boolean addPlayer(String name, String profilePicture)throws BigNameException,NoDataException {
+		public boolean addPlayer(String name, Image profilePicture)throws BigNameException,NoDataException {
 	            boolean playerAdd=true;
 	            if(name=="" ||profilePicture==null) {
-	            	Image img= new Image(profilePicture);
-	            	throw new NoDataException(name,img);
+	            	throw new NoDataException(name,profilePicture);
 	            }else if(name.length()>10) {
 	            	throw new BigNameException(name.length());
 	            }else {
