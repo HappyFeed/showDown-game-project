@@ -120,6 +120,7 @@ public class SelectCharacterController {
     @FXML
     void initialize() {
     	next.setVisible(false);
+    	selectPlayer.setText("1");
     }
     
     @FXML
@@ -133,6 +134,7 @@ public class SelectCharacterController {
 			    score.show();
 			    namePlayers.setText("");
 			    selectPlayer.setText("2");
+			    img=null;
 			    if(g.getFirstPlayer().getNextPlayer()!=null) {
 			        saveButton.setVisible(false);
 			    	next.setVisible(true);

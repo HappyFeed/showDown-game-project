@@ -69,12 +69,12 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		}
 
 
-		public Type getK() {
+		public Type getType() {
 			return k;
 		}
 
 
-		public void setK(Type k) {
+		public void setType(Type k) {
 			this.k = k;
 		}
 

@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import customeExceptions.BigTeamException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,10 +22,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-
+import javafx.stage.StageStyle;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-
+import javafx.scene.control.Alert.AlertType;
 import model.Player;
 import model.Pokemon;
 
@@ -125,13 +126,42 @@ public class SelectTeamController {
 		try {
 	    	players=p;
 			players.loadPokemons();
+			next.setVisible(false);
 	    	showInformation();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
     }
-
+    public void savePokemon(String name,Image pokemonPic) {
+    	try {
+        	Pokemon p=players.searchPokemon(name);
+        	int choose=players.addPokemonLinkedList(name, pokemonPic, p.getType(), p.getBaseLife(), p.getBasicAtack(), p.getBasicDefense(), p.getEspecialAtack(), p.getEspecialDefense(), p.getSpeed());
+			Alert score = new Alert(AlertType.ERROR);
+		    score.setTitle("FinalFinal5EnElProyecto-Game");
+		    score.initStyle(StageStyle.DECORATED);
+		    score.setContentText(name+" is now in your team");
+		    score.show();
+		    playerTurn.setText("2");
+		    players=players.getNextPlayer();
+        	if(choose>6) {
+        		players=players.getNextPlayer();
+        		playerTurn.setText("2");
+        	};
+        	if(choose==6 && players.getNextPlayer()==null) {
+        		next.setVisible(true);
+        		disableButtons();
+        	}
+    	}catch(BigTeamException bte) {
+			Alert score = new Alert(AlertType.ERROR);
+		    score.setTitle("FinalFinal5EnElProyecto-Game");
+		    score.initStyle(StageStyle.DECORATED);
+		    score.setContentText(bte.getMessage());
+		    score.show();
+		    playerTurn.setText("2");
+		    players=players.getNextPlayer();
+    	}
+ }
 
     public void showInformation() throws IOException {
     	clearData();
@@ -147,21 +177,17 @@ public class SelectTeamController {
     	    	int bottonN=0;
     			for (int i = (16*j); i <16+(16*j) && i<rootPokemon.size(); i++) {
     	    			if(i>=b.size()) {
+    	    				b.get(bottonN).setVisible(true);
     	    				b.get(bottonN).setText(rootPokemon.get(i).getName());
-    	    				
-    	    				System.out.println(rootPokemon.get(i).getName()+i);
- 
     	    				b.get(bottonN).setBackground(new Background(new BackgroundImage(whatPokemosIs(rootPokemon.get(i).getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,new BackgroundSize(b.get(0).getWidth(), b.get(0).getHeight(), true, true, true, true))));  
 
     	    				bottonN++;
     	    				if(bottonN>=b.size()) {
     	    					bottonN=0;
-    	    				}
-    	    				
+    	    				}   	    				
     	    			}else {
+    	    				b.get(i).setVisible(true);
     	    				b.get(i).setText(rootPokemon.get(i).getName());
-    	    				System.out.println(rootPokemon.get(i).getName()+i);
-
     	    				b.get(i).setBackground(new Background(new BackgroundImage(whatPokemosIs(rootPokemon.get(i).getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,new BackgroundSize(b.get(0).getWidth(), b.get(0).getHeight(), true, true, true, true))));  
 
     	    			}
@@ -516,24 +542,41 @@ public class SelectTeamController {
     	pokemon14.setText("");
     	pokemon15.setText("");
     	pokemon16.setText("");
-    	pokemon1.setGraphic(null);
-    	pokemon2.setGraphic(null);
-    	pokemon3.setGraphic(null);
-    	pokemon4.setGraphic(null);
-    	pokemon5.setGraphic(null);
-    	pokemon6.setGraphic(null);
-    	pokemon7.setGraphic(null);
-    	pokemon8.setGraphic(null);
-    	pokemon9.setGraphic(null);
-    	pokemon10.setGraphic(null);
-    	pokemon11.setGraphic(null);
-    	pokemon12.setGraphic(null);
-    	pokemon13.setGraphic(null);
-    	pokemon14.setGraphic(null);
-    	pokemon15.setGraphic(null);
-    	pokemon16.setGraphic(null);
+    	pokemon1.setVisible(false);
+    	pokemon2.setVisible(false);
+    	pokemon3.setVisible(false);
+    	pokemon4.setVisible(false);
+    	pokemon5.setVisible(false);
+    	pokemon6.setVisible(false);
+    	pokemon7.setVisible(false);
+    	pokemon8.setVisible(false);
+    	pokemon9.setVisible(false);
+    	pokemon10.setVisible(false);
+    	pokemon11.setVisible(false);
+    	pokemon12.setVisible(false);
+    	pokemon13.setVisible(false);
+    	pokemon14.setVisible(false);
+    	pokemon15.setVisible(false);
+    	pokemon16.setVisible(false);
     	
     	
+    }
+    public void disableButtons() {
+    	pokemon1.setDisable(true);
+    	pokemon2.setDisable(true);
+    	pokemon4.setDisable(true);
+    	pokemon5.setDisable(true);
+    	pokemon6.setDisable(true);
+    	pokemon7.setDisable(true);
+    	pokemon8.setDisable(true);
+    	pokemon9.setDisable(true);
+    	pokemon10.setDisable(true);
+    	pokemon11.setDisable(true);
+    	pokemon12.setDisable(true);
+    	pokemon13.setDisable(true);
+    	pokemon14.setDisable(true);
+    	pokemon15.setDisable(true);
+    	pokemon16.setDisable(true);
     }
     @FXML
     void backToStage(ActionEvent event) {
@@ -558,82 +601,114 @@ public class SelectTeamController {
 
     @FXML
     void selectThisPokemon1(ActionEvent event) {
-
+    	String namePokemon=pokemon1.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon10(ActionEvent event) {
-
+    	String namePokemon=pokemon10.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon11(ActionEvent event) {
-
+    	String namePokemon=pokemon11.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon12(ActionEvent event) {
-
+    	String namePokemon=pokemon12.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon13(ActionEvent event) {
-
+    	String namePokemon=pokemon13.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon14(ActionEvent event) {
-
+    	String namePokemon=pokemon14.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon15(ActionEvent event) {
-
+    	String namePokemon=pokemon15.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon16(ActionEvent event) {
-
+    	String namePokemon=pokemon16.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon2(ActionEvent event) {
-
+    	String namePokemon=pokemon2.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon3(ActionEvent event) {
-
+    	String namePokemon=pokemon3.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon4(ActionEvent event) {
-
+    	String namePokemon=pokemon4.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon5(ActionEvent event) {
-
+    	String namePokemon=pokemon5.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon6(ActionEvent event) {
-
+    	String namePokemon=pokemon6.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon7(ActionEvent event) {
-
+    	String namePokemon=pokemon7.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon8(ActionEvent event) {
-
+    	String namePokemon=pokemon8.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
 
     @FXML
     void selectThisPokemon9(ActionEvent event) {
-
+    	String namePokemon=pokemon9.getText();
+    	Image img=whatPokemosIs(namePokemon);
+    	savePokemon(namePokemon,img);
     }
     
 }
