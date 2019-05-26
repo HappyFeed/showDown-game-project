@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SelectTeamController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="722.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SelectTeamController">
    <children>
-      <Label layoutX="248.0" layoutY="26.0" text="Choose your Team">
+      <Label layoutX="248.0" layoutY="26.0" text="Choose your Team" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="46.0" />
          </font>
@@ -29,22 +29,22 @@
       <Button fx:id="pokemon14" layoutX="455.0" layoutY="236.0" mnemonicParsing="false" onAction="#selectThisPokemon14" prefHeight="80.0" prefWidth="53.0" />
       <Button fx:id="pokemon15" layoutX="533.0" layoutY="236.0" mnemonicParsing="false" onAction="#selectThisPokemon15" prefHeight="80.0" prefWidth="53.0" />
       <Button fx:id="pokemon16" layoutX="606.0" layoutY="236.0" mnemonicParsing="false" onAction="#selectThisPokemon16" prefHeight="80.0" prefWidth="53.0" />
-      <Button layoutX="303.0" layoutY="373.0" mnemonicParsing="false" onAction="#backPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300;" text="&lt;">
+      <Button layoutX="303.0" layoutY="373.0" mnemonicParsing="false" onAction="#backPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300; -fx-background-color: white;" text="&lt;">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
       </Button>
-      <Button layoutX="405.0" layoutY="373.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300;" text="&gt;">
+      <Button layoutX="405.0" layoutY="373.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="25.0" prefWidth="39.0" style="-fx-background-radius: 300; -fx-background-color: white;" text="&gt;">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
       </Button>
-      <Button fx:id="next" layoutX="625.0" layoutY="408.0" mnemonicParsing="false" onAction="#nextToStage" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: BLack; -fx-background-radius: 100;" text="Next" textFill="WHITE">
+      <Button fx:id="next" layoutX="625.0" layoutY="408.0" mnemonicParsing="false" onAction="#nextToStage" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: white; -fx-background-radius: 100;" text="Next">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="back" layoutX="23.0" layoutY="408.0" mnemonicParsing="false" onAction="#backToStage" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: BLack; -fx-background-radius: 100;" text="Back" textFill="WHITE">
+      <Button fx:id="back" layoutX="23.0" layoutY="408.0" mnemonicParsing="false" onAction="#backToStage" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: white; -fx-background-radius: 100;" text="Back">
          <font>
             <Font size="16.0" />
          </font>

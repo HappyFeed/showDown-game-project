@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import model.Player;
 import model.Pokemon;
 
@@ -118,31 +123,10 @@ public class SelectTeamController {
 
     
 
-    public void showInformation(List<Pokemon> pokemons) {
-    	int pagesN=(pokemons.size()/16);
-    	List<Button> buttons = addButtons();
-    	if(pokemons.size()%16>0) {
-    		pagesN+=1;
-    	}
-    	for(int j=0;j<pagesN;j++){
-    		if(j+1==Integer.parseInt(pages.getText())){
-    	    	for (int i = (16*j); i <16+(16*j) && i<pokemons.size(); i++) {
-    	    		
-    	    		
-    	    		//Image img = pokemons.get(i).getImg();
-    	    		Image img=new Image(getClass().getResource("ui/icono.png").toString());
-    	    		if(img!=null) {
-                    buttons.get(j).setGraphic(new ImageView(img));
-                    System.out.println("izi");
-    	    		}
-    	    		
-    	    	}
-    		}
-    	}
-    }
 
 
     public void showInformation() throws IOException {
+    	clearData();
 	   	ArrayList<Pokemon> rootPokemon= players.inOrder();
     	int pagesN=(rootPokemon.size()/16);
     	List<Button>b=addButtons();
@@ -156,10 +140,10 @@ public class SelectTeamController {
     			for (int i = (16*j); i <16+(16*j) && i<rootPokemon.size(); i++) {
     	    			if(i>=b.size()) {
     	    				b.get(bottonN).setText(rootPokemon.get(i).getName());
-    	    				 b.get(bottonN).setGraphic(new ImageView(rootPokemon.get(i).getImg()));
+    	    				
     	    				System.out.println(rootPokemon.get(i).getName()+i);
-
-    	    				b.get(bottonN).setText(rootPokemon.get(i).getName());  
+ 
+    	    				b.get(bottonN).setBackground(new Background(new BackgroundImage(whatPokemosIs(rootPokemon.get(i).getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,new BackgroundSize(b.get(0).getWidth(), b.get(0).getHeight(), true, true, true, true))));  
 
     	    				bottonN++;
     	    				if(bottonN>=b.size()) {
@@ -168,6 +152,10 @@ public class SelectTeamController {
     	    				
     	    			}else {
     	    				b.get(i).setText(rootPokemon.get(i).getName());
+    	    				System.out.println(rootPokemon.get(i).getName()+i);
+
+    	    				b.get(i).setBackground(new Background(new BackgroundImage(whatPokemosIs(rootPokemon.get(i).getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,new BackgroundSize(b.get(0).getWidth(), b.get(0).getHeight(), true, true, true, true))));  
+
     	    			}
     		    }
     	    	flag=false;
@@ -175,7 +163,315 @@ public class SelectTeamController {
 		}
     }
     
-    @FXML
+    private Image whatPokemosIs(String name) {
+		if(name.equals("Zubat")==true) {
+			return new Image(new File("imagesPokemons/zubat.jpg").toURI().toString());
+		} else if (name.equals("Zapdos")==true) {
+			return new Image(new File("imagesPokemons/zapdos.jpg").toURI().toString());
+		} else if (name.equals("Wigglytuff")==true) {
+			return new Image(new File("imagesPokemons/wigglytuff.jpg").toURI().toString());
+		} else if (name.equals("Wezzing")==true) {
+			return new Image(new File("imagesPokemons/weezing.jpg").toURI().toString());
+		} else if (name.equals("Weepinbell")==true) {
+			return new Image(new File("imagesPokemons/weepinbell.jpg").toURI().toString());
+		} else if (name.equals("Weedle")==true) {
+			return new Image(new File("imagesPokemons/weedle.jpg").toURI().toString());
+		} else if (name.equals("Wartortle")==true) {
+			return new Image(new File("imagesPokemons/wartotle.jpg").toURI().toString());
+		}else if (name.equals("Vulpix")==true) {
+			return new Image(new File("imagesPokemons/vulpix.jpg").toURI().toString());
+		}else if (name.equals("Voltorb")==true) {
+			return new Image(new File("imagesPokemons/voltorb.jpg").toURI().toString());
+		}else if (name.equals("Vileplume")==true) {
+			return new Image(new File("imagesPokemons/vileplume.jpg").toURI().toString());
+		}else if (name.equals("Victreebel")==true) {
+			return new Image(new File("imagesPokemons/victreebel.jpg").toURI().toString());
+		}else if (name.equals("Venusaur")==true) {
+			return new Image(new File("imagesPokemons/venusaur.jpg").toURI().toString());
+		}else if (name.equals("Venonat")==true) {
+			return new Image(new File("imagesPokemons/venonat.jpg").toURI().toString());
+		}else if (name.equals("Venomoth")==true) {
+			return new Image(new File("imagesPokemons/venomoth.jpg").toURI().toString());
+		}else if (name.equals("Vaporeon")==true) {
+			return new Image(new File("imagesPokemons/vaporeon.jpg").toURI().toString());
+		}else if (name.equals("Tentacruel")==true) {
+			return new Image(new File("imagesPokemons/tentacruel.jpg").toURI().toString());
+		}else if (name.equals("Tentacool")==true) {
+			return new Image(new File("imagesPokemons/tentacool.jpg").toURI().toString());
+		}else if (name.equals("Tauros")==true) {
+			return new Image(new File("imagesPokemons/Tauros.jpg").toURI().toString());
+		}else if (name.equals("Tangela")==true) {
+			return new Image(new File("imagesPokemons/tangela.jpg").toURI().toString());
+		} else if (name.equals("Staryu")==true) {
+			return new Image(new File("imagesPokemons/staryu.jpg").toURI().toString());
+		} else if (name.equals("Starmie")==true) {
+			return new Image(new File("imagesPokemons/starmie.jpg").toURI().toString());
+		} else if (name.equals("Squirtle")==true) {
+			return new Image(new File("imagesPokemons/squirtle.jpg").toURI().toString());
+		} else if (name.equals("Spearow")==true) {
+			return new Image(new File("imagesPokemons/spearow.jpg").toURI().toString());
+		} else if (name.equals("Snorlax")==true) {
+			return new Image(new File("imagesPokemons/snorlax.jpg").toURI().toString());
+		}else if (name.equals("Slowpoke")==true) {
+			return new Image(new File("imagesPokemons/slowpoke.jpg").toURI().toString());
+		}else if (name.equals("Slowbro")==true) {
+			return new Image(new File("imagesPokemons/slowbro.jpg").toURI().toString());
+		}else if (name.equals("Shellder")==true) {
+			return new Image(new File("imagesPokemons/shellder.jpg").toURI().toString());
+		}else if (name.equals("Seel")==true) {
+			return new Image(new File("imagesPokemons/seel.jpg").toURI().toString());
+		}else if (name.equals("Seaking")==true) {
+			return new Image(new File("imagesPokemons/seaking.jpg").toURI().toString());
+		}else if (name.equals("Seadra")==true) {
+			return new Image(new File("imagesPokemons/seadra.jpg").toURI().toString());
+		}else if (name.equals("Scyther")==true) {
+			return new Image(new File("imagesPokemons/scyther.jpg").toURI().toString());
+		}else if (name.equals("Sandslash")==true) {
+			return new Image(new File("imagesPokemons/sandslash.jpg").toURI().toString());
+		}else if (name.equals("Sandshrew")==true) {
+			return new Image(new File("imagesPokemons/sandshrew.jpg").toURI().toString());
+		}else if (name.equals("Rhyhorn")==true) {
+			return new Image(new File("imagesPokemons/rhyhorn.jpg").toURI().toString());
+		}else if (name.equals("Rhydon")==true) {
+			return new Image(new File("imagesPokemons/rhydon.jpg").toURI().toString());
+		}else if (name.equals("Rattata")==true) {
+			return new Image(new File("imagesPokemons/rattata.jpg").toURI().toString());
+		} else if (name.equals("Raticate")==true) {
+			return new Image(new File("imagesPokemons/raticate.jpg").toURI().toString());
+		} else if (name.equals("Rapidash")==true) {
+			return new Image(new File("imagesPokemons/rapidash.jpg").toURI().toString());
+		} else if (name.equals("Raichu")==true) {
+			return new Image(new File("imagesPokemons/raichu.jpg").toURI().toString());
+		} else if (name.equals("Psyduck")==true) {
+			return new Image(new File("imagesPokemons/psyduck.jpg").toURI().toString());
+		} else if (name.equals("Primeape")==true) {
+			return new Image(new File("imagesPokemons/primeape.jpg").toURI().toString());
+		}else if (name.equals("Porygon")==true) {
+			return new Image(new File("imagesPokemons/porygon.jpg").toURI().toString());
+		}else if (name.equals("Ponyta")==true) {
+			return new Image(new File("imagesPokemons/ponyta.jpg").toURI().toString());
+		}else if (name.equals("Poliwrath")==true) {
+			return new Image(new File("imagesPokemons/poliwrath.jpg").toURI().toString());
+		}else if (name.equals("Poliwhirl")==true) {
+			return new Image(new File("imagesPokemons/poliwhirl.jpg").toURI().toString());
+		}else if (name.equals("Poliwag")==true) {
+			return new Image(new File("imagesPokemons/poliwag.jpg").toURI().toString());
+		}else if (name.equals("Pinsir")==true) {
+			return new Image(new File("imagesPokemons/pinsir.jpg").toURI().toString());
+		}else if (name.equals("Pikachu")==true) {
+			return new Image(new File("imagesPokemons/pikachu.jpg").toURI().toString());
+		}else if (name.equals("Pidgey")==true) {
+			return new Image(new File("imagesPokemons/pidgey.jpg").toURI().toString());
+		}else if (name.equals("Pidgeotto")==true) {
+			return new Image(new File("imagesPokemons/pidgeotto.jpg").toURI().toString());
+		}else if (name.equals("Pidgeot")==true) {
+			return new Image(new File("imagesPokemons/pidgeot.jpg").toURI().toString());
+		}else if (name.equals("Persian")==true) {
+			return new Image(new File("imagesPokemons/persian.jpg").toURI().toString());
+		} else if (name.equals("Parasect")==true) {
+			return new Image(new File("imagesPokemons/parasect.jpg").toURI().toString());
+		} else if (name.equals("Paras")==true) {
+			return new Image(new File("imagesPokemons/paras.jpg").toURI().toString());
+		} else if (name.equals("Onix")==true) {
+			return new Image(new File("imagesPokemons/onix.jpg").toURI().toString());
+		} else if (name.equals("Omastar")==true) {
+			return new Image(new File("imagesPokemons/omastar.jpg").toURI().toString());
+		}else if (name.equals("Omanyte")==true) {
+			return new Image(new File("imagesPokemons/omanyte.jpg").toURI().toString());
+		}else if (name.equals("Oddish")==true) {
+			return new Image(new File("imagesPokemons/oddish.jpg").toURI().toString());
+		}else if (name.equals("Ninetales")==true) {
+			return new Image(new File("imagesPokemons/ninetales.jpg").toURI().toString());
+		}else if (name.equals("Nidorino")==true) {
+			return new Image(new File("imagesPokemons/nidorino.jpg").toURI().toString());
+		}else if (name.equals("Nidorina")==true) {
+			return new Image(new File("imagesPokemons/nidorina.jpg").toURI().toString());
+		}else if (name.equals("Nidoran")==true) {
+			return new Image(new File("imagesPokemons/nidoranMacho.jpg").toURI().toString());
+		}else if (name.equals("Nidoqueen")==true) {
+			return new Image(new File("imagesPokemons/nidoqueen.jpg").toURI().toString());
+		}else if (name.equals("Nidoking")==true) {
+			return new Image(new File("imagesPokemons/nidoking.jpg").toURI().toString());
+		}else if (name.equals("Muk")==true) {
+			return new Image(new File("imagesPokemons/muk.jpg").toURI().toString());
+		}else if (name.equals("Mr.mime")==true) {
+			return new Image(new File("imagesPokemons/mr. mime.jpg").toURI().toString());
+		}else if (name.equals("Moltres")==true) {
+			return new Image(new File("imagesPokemons/moltres.jpg").toURI().toString());
+		}else if (name.equals("Mewtwo")==true) {
+			return new Image(new File("imagesPokemons/mewtwo.jpg").toURI().toString());
+		} else if (name.equals("Mew")==true) {
+			return new Image(new File("imagesPokemons/mew.jpg").toURI().toString());
+		} else if (name.equals("Metapod")==true) {
+			return new Image(new File("imagesPokemons/metapod.jpg").toURI().toString());
+		} else if (name.equals("Meowth")==true) {
+			return new Image(new File("imagesPokemons/meowth.jpg").toURI().toString());
+		} else if (name.equals("Marowak")==true) {
+			return new Image(new File("imagesPokemons/marowak.jpg").toURI().toString());
+		} else if (name.equals("Mankey")==true) {
+			return new Image(new File("imagesPokemons/mankey.jpg").toURI().toString());
+		}else if (name.equals("Magneton")==true) {
+			return new Image(new File("imagesPokemons/magneton.jpg").toURI().toString());
+		}else if (name.equals("Magnemite")==true) {
+			return new Image(new File("imagesPokemons/magnemite.jpg").toURI().toString());
+		}else if (name.equals("Magmar")==true) {
+			return new Image(new File("imagesPokemons/magmar.jpg").toURI().toString());
+		}else if (name.equals("Magikarp")==true) {
+			return new Image(new File("imagesPokemons/magikarp.jpg").toURI().toString());
+		}else if (name.equals("Machop")==true) {
+			return new Image(new File("imagesPokemons/machop.jpg").toURI().toString());
+		}else if (name.equals("Machoke")==true) {
+			return new Image(new File("imagesPokemons/machoke.jpg").toURI().toString());
+		}else if (name.equals("Machamp")==true) {
+			return new Image(new File("imagesPokemons/machamp.jpg").toURI().toString());
+		}else if (name.equals("Lickitung")==true) {
+			return new Image(new File("imagesPokemons/lickitung.jpg").toURI().toString());
+		}else if (name.equals("Lapras")==true) {
+			return new Image(new File("imagesPokemons/lapras.jpg").toURI().toString());
+		}else if (name.equals("Krabby")==true) {
+			return new Image(new File("imagesPokemons/krabby.jpg").toURI().toString());
+		}else if (name.equals("Koffing")==true) {
+			return new Image(new File("imagesPokemons/koffing.jpg").toURI().toString());
+		}else if (name.equals("Kingler")==true) {
+			return new Image(new File("imagesPokemons/kingler.jpg").toURI().toString());
+		}else if (name.equals("Kangaskhan")==true) {
+			return new Image(new File("imagesPokemons/kangaskahn.jpg").toURI().toString());
+		}else if (name.equals("Kakuna")==true) {
+			return new Image(new File("imagesPokemons/kakuna.jpg").toURI().toString());
+		}else if (name.equals("Kadabra")==true) {
+			return new Image(new File("imagesPokemons/kadabra.jpg").toURI().toString());
+		}else if (name.equals("Kabutops")==true) {
+			return new Image(new File("imagesPokemons/kabutops.jpg").toURI().toString());
+		}else if (name.equals("Kabuto")==true) {
+			return new Image(new File("imagesPokemons/kabuto.jpg").toURI().toString());
+		} else if (name.equals("Jynx")==true) {
+			return new Image(new File("imagesPokemons/jynx.jpg").toURI().toString());
+		} else if (name.equals("Jolteon")==true) {
+			return new Image(new File("imagesPokemons/jolteon.jpg").toURI().toString());
+		} else if (name.equals("Jigglypuff")==true) {
+			return new Image(new File("imagesPokemons/jigglypuff.jpg").toURI().toString());
+		} else if (name.equals("Ivysaur")==true) {
+			return new Image(new File("imagesPokemons/ivysaur.jpg").toURI().toString());
+		} else if (name.equals("Hypno")==true) {
+			return new Image(new File("imagesPokemons/hypno.jpg").toURI().toString());
+		}else if (name.equals("Horsea")==true) {
+			return new Image(new File("imagesPokemons/horsea.jpg").toURI().toString());
+		}else if (name.equals("Hitmonlee")==true) {
+			return new Image(new File("imagesPokemons/hitmonlee.jpg").toURI().toString());
+		}else if (name.equals("Hitmonchan")==true) {
+			return new Image(new File("imagesPokemons/hitmonchan.jpg").toURI().toString());
+		}else if (name.equals("Haunter")==true) {
+			return new Image(new File("imagesPokemons/haunter.jpg").toURI().toString());
+		}else if (name.equals("Gyarados")==true) {
+			return new Image(new File("imagesPokemons/gyarados.jpg").toURI().toString());
+		}else if (name.equals("Growlithe")==true) {
+			return new Image(new File("imagesPokemons/growlithe.jpg").toURI().toString());
+		}else if (name.equals("Grimer")==true) {
+			return new Image(new File("imagesPokemons/grimer.jpg").toURI().toString());
+		}else if (name.equals("Graveler")==true) {
+			return new Image(new File("imagesPokemons/graveler.jpg").toURI().toString());
+		}else if (name.equals("Golem")==true) {
+			return new Image(new File("imagesPokemons/golem.jpg").toURI().toString());
+		}else if (name.equals("Golduck")==true) {
+			return new Image(new File("imagesPokemons/golduck.jpg").toURI().toString());
+		}else if (name.equals("Goldeen")==true) {
+			return new Image(new File("imagesPokemons/goldeen.jpg").toURI().toString());
+		}else if (name.equals("Golbat")==true) {
+			return new Image(new File("imagesPokemons/golbat.jpg").toURI().toString());
+		} else if (name.equals("Gloom")==true) {
+			return new Image(new File("imagesPokemons/gloom.jpg").toURI().toString());
+		} else if (name.equals("Geodude")==true) {
+			return new Image(new File("imagesPokemons/geodude.jpg").toURI().toString());
+		} else if (name.equals("Gengar")==true) {
+			return new Image(new File("imagesPokemons/gengar.jpg").toURI().toString());
+		} else if (name.equals("Gastly")==true) {
+			return new Image(new File("imagesPokemons/gastly.jpg").toURI().toString());
+		} else if (name.equals("Flareon")==true) {
+			return new Image(new File("imagesPokemons/flareon.jpg").toURI().toString());
+		}else if (name.equals("Fearow")==true) {
+			return new Image(new File("imagesPokemons/fearow.jpg").toURI().toString());
+		}else if (name.equals("Farfetch")==true) {
+			return new Image(new File("imagesPokemons/farfetch'd.jpg").toURI().toString());
+		}else if (name.equals("Exeggutor")==true) {
+			return new Image(new File("imagesPokemons/exeggutor.jpg").toURI().toString());
+		}else if (name.equals("Exeggcute")==true) {
+			return new Image(new File("imagesPokemons/exeggcute.jpg").toURI().toString());
+		}else if (name.equals("Electrode")==true) {
+			return new Image(new File("imagesPokemons/electrode.jpg").toURI().toString());
+		}else if (name.equals("Electabuzz")==true) {
+			return new Image(new File("imagesPokemons/electabuzz.jpg").toURI().toString());
+		}else if (name.equals("Ekans")==true) {
+			return new Image(new File("imagesPokemons/ekans.jpg").toURI().toString());
+		}else if (name.equals("Eevee")==true) {
+			return new Image(new File("imagesPokemons/eevee.jpg").toURI().toString());
+		}else if (name.equals("Dugtrio")==true) {
+			return new Image(new File("imagesPokemons/dugtrio.jpg").toURI().toString());
+		}else if (name.equals("Drowzee")==true) {
+			return new Image(new File("imagesPokemons/drowzee.jpg").toURI().toString());
+		}else if (name.equals("Dratini")==true) {
+			return new Image(new File("imagesPokemons/dratini.jpg").toURI().toString());
+		} else if (name.equals("Dragonite")==true) {
+			return new Image(new File("imagesPokemons/dragonite.jpg").toURI().toString());
+		} else if (name.equals("Dragonair")==true) {
+			return new Image(new File("imagesPokemons/dragonair.jpg").toURI().toString());
+		} else if (name.equals("Doduo")==true) {
+			return new Image(new File("imagesPokemons/Doduo.jpg").toURI().toString());
+		} else if (name.equals("Dodrio")==true) {
+			return new Image(new File("imagesPokemons/dodrio.jpg").toURI().toString());
+		}else if (name.equals("Ditto")==true) {
+			return new Image(new File("imagesPokemons/ditto.jpg").toURI().toString());
+		}else if (name.equals("Diglett")==true) {
+			return new Image(new File("imagesPokemons/diglett.jpg").toURI().toString());
+		}else if (name.equals("Dewgong")==true) {
+			return new Image(new File("imagesPokemons/dewgong.jpg").toURI().toString());
+		}else if (name.equals("Cubone")==true) {
+			return new Image(new File("imagesPokemons/cubone.jpg").toURI().toString());
+		}else if (name.equals("Cloyster")==true) {
+			return new Image(new File("imagesPokemons/cloyster.jpg").toURI().toString());
+		}else if (name.equals("Clefairy")==true) {
+			return new Image(new File("imagesPokemons/clefairy.jpg").toURI().toString());
+		}else if (name.equals("Clefable")==true) {
+			return new Image(new File("imagesPokemons/clefable.jpg").toURI().toString());
+		}else if (name.equals("Charmeleon")==true) {
+			return new Image(new File("imagesPokemons/charmeleon.jpg").toURI().toString());
+		}else if (name.equals("Charmander")==true) {
+			return new Image(new File("imagesPokemons/charmander.jpg").toURI().toString());
+		}else if (name.equals("Charizard")==true) {
+			return new Image(new File("imagesPokemons/charizard.jpg").toURI().toString());
+		}else if (name.equals("Chansey")==true) {
+			return new Image(new File("imagesPokemons/chansey.jpg").toURI().toString());
+		}else if (name.equals("Caterpie")==true) {
+			return new Image(new File("imagesPokemons/caterpie.jpg").toURI().toString());
+		} else if (name.equals("Butterfree")==true) {
+			return new Image(new File("imagesPokemons/butterfree.jpg").toURI().toString());
+		} else if (name.equals("Bulbasaur")==true) {
+			return new Image(new File("imagesPokemons/bulbasaur.jpg").toURI().toString());
+		} else if (name.equals("Blastoise")==true) {
+			return new Image(new File("imagesPokemons/blastoise.jpg").toURI().toString());
+		} else if (name.equals("Bellsprout")==true) {
+			return new Image(new File("imagesPokemons/bellsprout.jpg").toURI().toString());
+		} else if (name.equals("Beedrill")==true) {
+			return new Image(new File("imagesPokemons/beedrill.jpg").toURI().toString());
+		}else if (name.equals("Articuno")==true) {
+			return new Image(new File("imagesPokemons/articuno.jpg").toURI().toString());
+		}else if (name.equals("Arcanine")==true) {
+			return new Image(new File("imagesPokemons/arcanine.jpg").toURI().toString());
+		}else if (name.equals("Arbok")==true) {
+			return new Image(new File("imagesPokemons/arbok.jpg").toURI().toString());
+		}else if (name.equals("Alakazam")==true) {
+			return new Image(new File("imagesPokemons/alakazam.jpg").toURI().toString());
+		}else if (name.equals("Aerodactyl")==true) {
+			return new Image(new File("imagesPokemons/aerodactyl.jpg").toURI().toString());
+		}else if (name.equals("Abra")==true) {
+			return new Image(new File("imagesPokemons/abra.jpg").toURI().toString());
+		}else if (name.equals("")) {
+			return new Image(new File("iconPokemons/0.jpg").toURI().toString());
+		}else{
+			return new Image(new File("iconPokemons/0.jpg").toURI().toString());
+		}
+	}
+
+	@FXML
     void backPage(ActionEvent event) throws IOException {
         int newPage= Integer.parseInt(pages.getText())-1;
         if(newPage>0) {
@@ -212,6 +508,24 @@ public class SelectTeamController {
     	pokemon14.setText("");
     	pokemon15.setText("");
     	pokemon16.setText("");
+    	pokemon1.setGraphic(null);
+    	pokemon2.setGraphic(null);
+    	pokemon3.setGraphic(null);
+    	pokemon4.setGraphic(null);
+    	pokemon5.setGraphic(null);
+    	pokemon6.setGraphic(null);
+    	pokemon7.setGraphic(null);
+    	pokemon8.setGraphic(null);
+    	pokemon9.setGraphic(null);
+    	pokemon10.setGraphic(null);
+    	pokemon11.setGraphic(null);
+    	pokemon12.setGraphic(null);
+    	pokemon13.setGraphic(null);
+    	pokemon14.setGraphic(null);
+    	pokemon15.setGraphic(null);
+    	pokemon16.setGraphic(null);
+    	
+    	
     }
     @FXML
     void backToStage(ActionEvent event) {
