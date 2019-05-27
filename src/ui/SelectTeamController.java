@@ -136,19 +136,17 @@ public class SelectTeamController {
     public void savePokemon(String name,Image pokemonPic) {
     	try {
         	Pokemon p=players.searchPokemon(name);
-        	int choose=players.addPokemonLinkedList(name, pokemonPic, p.getType(), p.getBaseLife(), p.getBasicAtack(), p.getBasicDefense(), p.getEspecialAtack(), p.getEspecialDefense(), p.getSpeed());
-			Alert score = new Alert(AlertType.ERROR);
+        	players.addPokemonLinkedList(name, pokemonPic, p.getType(), p.getBaseLife(), p.getBasicAtack(), p.getBasicDefense(), p.getEspecialAtack(), p.getEspecialDefense(), p.getSpeed());
+			Alert score = new Alert(AlertType.INFORMATION);
 		    score.setTitle("FinalFinal5EnElProyecto-Game");
 		    score.initStyle(StageStyle.DECORATED);
-		    score.setContentText(name+" is now in your team");
+		    score.setContentText(name+" is now in your team "+players.sizeTeam());
 		    score.show();
-		    playerTurn.setText("2");
-		    players=players.getNextPlayer();
-        	if(choose>6) {
+        	if(players.sizeTeam()>6) {
         		players=players.getNextPlayer();
         		playerTurn.setText("2");
-        	};
-        	if(choose==6 && players.getNextPlayer()==null) {
+        	}
+        	if(players.sizeTeam()==6 && players.getNextPlayer()==null) {
         		next.setVisible(true);
         		disableButtons();
         	}

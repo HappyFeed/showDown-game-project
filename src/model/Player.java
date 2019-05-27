@@ -75,42 +75,44 @@ public class Player implements Serializable, Searching{
 	public Pokemon getRootPokemon() {
 		return rootPokemons;
 	}
-	public int addPokemonLinkedList(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) throws BigTeamException  {
+	public void addPokemonLinkedList(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) throws BigTeamException  {
 		Pokemon p= new Pokemon(name, champPic, k, baseLife, basicAtack, basicDefense, especialAtack, especialDefense, speed);
-        int pokemonAdd=0;
+		int size=sizeTeam();
+		System.out.println("inicio"+size);
 		if(team == null) {
 			team = p;
-			team.setPrevPokemon(p);
-			team.setNextPokemon(p);
-			pokemonAdd++;
+			size++;
+			System.out.println("ROOT"+size);
 		}else {
-			Pokemon current = team;
-			if(sizeTeam()) {
-    			current.setNextPokemon(p);
+			Pokemon current = team;			
+    		while(current.getNextPokemon()!=null) {
+    			size++;
+    			current=current.getNextPokemon();
+    			System.out.println(size);
+    		}
+			current.setNextPokemon(p);
+			p.setPrevPokemon(current);
+    		/*if(size<6) {    	
+    			System.out.println("TEAM"+size);
+				current.setNextPokemon(p);
     			p.setPrevPokemon(current);
-    			p.setNextPokemon(team);
-    			team.setPrevPokemon(p);	
-    			pokemonAdd++;
-			}else if(!sizeTeam()) {
+			}else if(size>6) {
 				throw new BigTeamException();			
-			}
+			}*/
 		}
-		System.out.println(pokemonAdd);
-		return pokemonAdd;
 	}
 	
-	public boolean sizeTeam() {
-		boolean flag=true;
+	public int sizeTeam() {		
 		int size=0;
-		Pokemon current= team;
-		while(current.getNextPokemon()!=team) {
-			size++;
-			current=team.getNextPokemon();
+		if(team!=null) {
+			while(team.getNextPokemon()!=null) {
+				size++;
+				team=team.getNextPokemon();
+				System.out.println(size);
+			}
 		}
-		if(size>6) {
-			flag=false;
-		}
-		return flag;
+
+		return size;
 	}
    	
 	public void loadPokemons() throws IOException {
@@ -163,13 +165,13 @@ public class Player implements Serializable, Searching{
 	
 	private Pokemon searchPokemon( Pokemon current,Pokemon s) {
 		if(current!=null) {
-			if(s.compareTo(current)<0) {
+			if(current.compareTo(s)<0) {
 				if(current.getLeft()!=null){
 					return searchPokemon(current.getLeft(),s);
 				}else {
 					return searchPokemon(current.getRight(), s);
 				}
-			}else if(s.compareTo(current)>0){
+			}else if(current.compareTo(s)>0){
 				if(current.getRight()!=null) {
 					return searchPokemon(current.getRight(), s);
 				}else {
