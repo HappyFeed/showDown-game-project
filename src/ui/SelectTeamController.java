@@ -143,13 +143,15 @@ public class SelectTeamController {
 		    score.setContentText(name+" is now in your team "+players.getSize());
 		    score.show();
         	
-        	if(players.getSize()==6 && players.getNextPlayer().equals(null)) {
-        		next.setVisible(true);
-        		disableButtons();
-        	}
         	if(players.getSize()>5) {
-        		players=players.getNextPlayer();
-        		playerTurn.setText("2");
+        		if(playerTurn.getText().equals("2")) {
+        			disableButtons();
+        			next.setVisible(true);
+        		}else {
+            		players=players.getNextPlayer();
+            		players.loadPokemons();
+            		playerTurn.setText("2");
+        		}
         	}
     	}catch(BigTeamException bte) {
 			Alert score = new Alert(AlertType.ERROR);
@@ -159,6 +161,8 @@ public class SelectTeamController {
 		    score.show();
 		    playerTurn.setText("2");
 		    players=players.getNextPlayer();
+    	}catch(IOException e) {
+    		e.printStackTrace();
     	}
  }
 
@@ -562,6 +566,7 @@ public class SelectTeamController {
     public void disableButtons() {
     	pokemon1.setDisable(true);
     	pokemon2.setDisable(true);
+    	pokemon3.setDisable(true);
     	pokemon4.setDisable(true);
     	pokemon5.setDisable(true);
     	pokemon6.setDisable(true);
