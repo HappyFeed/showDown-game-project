@@ -11,7 +11,7 @@ import customeExceptions.BigTeamException;
 import javafx.scene.image.Image;
 
 @SuppressWarnings("serial")
-public class Player implements Serializable{
+public class Player implements Serializable, Searching{
 	
 	//Attributes
 	private String name;
@@ -192,5 +192,46 @@ public class Player implements Serializable{
 			l.addAll(inOrder(r.getRight()));
 		}
 		return l;
+	}
+
+	@Override
+	public Pokemon binarySearch(Pokemon p) {
+		
+		ArrayList<Pokemon> list=  inOrder();
+		int low=0;
+		int high=list.size();
+		Pokemon found=null;
+		while (low<=high) {
+			int mid=(low+high)/2;
+			if (list.get(mid).compareTo(p)<0) {
+				low=mid+1;
+				
+			} else if (list.get(mid).compareTo(p)>0) {
+				
+				high=mid-1;
+			} else {
+				
+				found= list.get(mid);
+				break;
+			}
+		}
+
+		return found;
+	}
+
+	@Override
+	public Pokemon linealSearch(Pokemon p) {
+		ArrayList<Pokemon> list=  inOrder();
+		Pokemon found=null;
+		
+		for (int i = 0; i < list.size(); i++) {
+			
+			if (list.get(i).equals(p)) {
+				found=list.get(i);
+			}
+			
+		}
+		
+		return found;
 	}
 }
