@@ -112,6 +112,7 @@ public class Player implements Serializable, Searching{
 		while(line != null){
 			String[] parts = line.split(",");
 			Pokemon nPokemon = new Pokemon(parts[0],null,Type.Fire,Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]),Double.parseDouble(parts[6]),Double.parseDouble(parts[7]),Double.parseDouble(parts[8]));
+			nPokemon.setType(Integer.parseInt(parts[2]));
 			addPokemonsToTree(nPokemon);
 			line = br.readLine();
 
