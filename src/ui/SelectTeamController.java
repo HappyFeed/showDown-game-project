@@ -87,6 +87,9 @@ public class SelectTeamController {
 
     @FXML
     private Button back;
+    
+    @FXML
+    private Button searchButton;
 
     @FXML
     private ComboBox<String> searchType;
@@ -128,8 +131,11 @@ public class SelectTeamController {
 			players.loadPokemons();
 			next.setVisible(false);
 	    	showInformation();
+	    	searchType.getItems().add("Binary");
+	    	searchType.getItems().add("Lineal");
 		} catch (IOException e) {
 			e.printStackTrace();
+			
 		}
 
     }
@@ -712,6 +718,43 @@ public class SelectTeamController {
     	String namePokemon=pokemon9.getText();
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
+    }
+    
+    @FXML
+    void searchAction(ActionEvent event) {
+    	try {
+        	String kind=searchType.getValue();
+        	String nameToSearch=pokemonToSearch.getText();
+        	Pokemon searching=null;
+        	if(kind.equals("Binary")) {
+        		Pokemon p=new Pokemon(nameToSearch,null,null,200,200,200,200,200,200);
+        		searching=players.binarySearch(p);
+        	}else if(kind.equals("Lineal")){
+        		Pokemon p=new Pokemon(nameToSearch,null,null,200,200,200,200,200,200);
+        		searching=players.linealSearch(p);
+        	}      	
+        
+        	if(searching!=null) {
+            	clearData();
+            	pokemon1.setVisible(true);
+            	pokemon1.setBackground(new Background(new BackgroundImage(whatPokemosIs(nameToSearch),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,new BackgroundSize(pokemon1.getWidth(), pokemon1.getHeight(), true, true, true, true))));  
+                pokemon1.setText(searching.getName());
+        	}else {
+    			Alert score = new Alert(AlertType.ERROR);
+    		    score.setTitle("FinalFinal5EnElProyecto-Game");
+    		    score.initStyle(StageStyle.DECORATED);
+    		    score.setContentText("That pokemons is not in this season");
+    		    score.show();
+        	}
+
+    	}catch(IndexOutOfBoundsException npe) {
+			Alert score = new Alert(AlertType.ERROR);
+		    score.setTitle("FinalFinal5EnElProyecto-Game");
+		    score.initStyle(StageStyle.DECORATED);
+		    score.setContentText("That pokemons is not in this season");
+		    score.show();
+    	}
+
     }
     
 }

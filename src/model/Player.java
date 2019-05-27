@@ -190,7 +190,7 @@ public class Player implements Serializable, Searching{
 	}
 
 	@Override
-	public Pokemon binarySearch(Pokemon p) {
+	public Pokemon binarySearch(Pokemon p)throws IndexOutOfBoundsException {
 		
 		ArrayList<Pokemon> list=  inOrder();
 		int low=0;
@@ -215,13 +215,13 @@ public class Player implements Serializable, Searching{
 	}
 
 	@Override
-	public Pokemon linealSearch(Pokemon p) {
+	public Pokemon linealSearch(Pokemon p) throws IndexOutOfBoundsException{
 		ArrayList<Pokemon> list=  inOrder();
 		Pokemon found=null;
 		
 		for (int i = 0; i < list.size(); i++) {
 			
-			if (list.get(i).equals(p)) {
+			if (list.get(i).getName().equals(p.getName())) {
 				found=list.get(i);
 			}
 			

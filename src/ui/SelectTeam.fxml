@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="722.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SelectTeamController">
    <children>
-      <Label layoutX="248.0" layoutY="26.0" text="Choose your Team" textFill="WHITE">
+      <Label layoutX="283.0" layoutY="32.0" text="Choose your Team" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="46.0" />
          </font>
@@ -55,5 +55,6 @@
       <Label layoutX="41.0" layoutY="26.0" prefHeight="17.0" prefWidth="43.0" text="Player:" />
       <Label fx:id="playerTurn" layoutX="84.0" layoutY="26.0" text="1" />
       <TextField fx:id="pokemonToSearch" layoutX="42.0" layoutY="82.0" text="Name pokemon" />
+      <Button fx:id="searchButton" layoutX="195.0" layoutY="82.0" mnemonicParsing="false" onAction="#searchAction" text="Go" />
    </children>
 </Pane>
