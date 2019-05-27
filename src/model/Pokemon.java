@@ -74,8 +74,8 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		}
 
 
-		public void setType(Type k) {
-			this.k = k;
+		public void setType(int n) {
+			this.k=k.assigType(n);
 		}
 
 
