@@ -140,15 +140,16 @@ public class SelectTeamController {
 			Alert score = new Alert(AlertType.INFORMATION);
 		    score.setTitle("FinalFinal5EnElProyecto-Game");
 		    score.initStyle(StageStyle.DECORATED);
-		    score.setContentText(name+" is now in your team "+players.sizeTeam());
+		    score.setContentText(name+" is now in your team "+players.getSize());
 		    score.show();
-        	if(players.sizeTeam()>6) {
-        		players=players.getNextPlayer();
-        		playerTurn.setText("2");
-        	}
-        	if(players.sizeTeam()==6 && players.getNextPlayer()==null) {
+        	
+        	if(players.getSize()==6 && players.getNextPlayer().equals(null)) {
         		next.setVisible(true);
         		disableButtons();
+        	}
+        	if(players.getSize()>5) {
+        		players=players.getNextPlayer();
+        		playerTurn.setText("2");
         	}
     	}catch(BigTeamException bte) {
 			Alert score = new Alert(AlertType.ERROR);
@@ -178,7 +179,6 @@ public class SelectTeamController {
     	    				b.get(bottonN).setVisible(true);
     	    				b.get(bottonN).setText(rootPokemon.get(i).getName());
     	    				b.get(bottonN).setBackground(new Background(new BackgroundImage(whatPokemosIs(rootPokemon.get(i).getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,new BackgroundSize(b.get(0).getWidth(), b.get(0).getHeight(), true, true, true, true))));  
-
     	    				bottonN++;
     	    				if(bottonN>=b.size()) {
     	    					bottonN=0;

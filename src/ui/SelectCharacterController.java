@@ -226,6 +226,8 @@ public class SelectCharacterController {
       }else {
     	  img=avatars.get(48);
       }
+      
+      character1.setVisible(false);
     }
 
     @FXML
@@ -237,6 +239,9 @@ public class SelectCharacterController {
           }else {
         	  img=avatars.get(41);
           }
+        
+        character10.setVisible(false);
+
     }
 
     @FXML
@@ -248,6 +253,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(42);
         }
+        
+        character11.setVisible(false);
+
     }
 
     @FXML
@@ -259,6 +267,9 @@ public class SelectCharacterController {
           }else {
         	  img=avatars.get(43);
           }
+        
+        character12.setVisible(false);
+
     }
 
     @FXML
@@ -270,6 +281,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(44);
         }
+        
+        character13.setVisible(false);
+
     }
 
     @FXML
@@ -281,6 +295,9 @@ public class SelectCharacterController {
           }else {
         	  img=avatars.get(45);
           }
+        
+        character14.setVisible(false);
+
     }
 
     @FXML
@@ -292,6 +309,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(46);
         }
+        
+        character15.setVisible(false);
+
     }
 
     @FXML
@@ -303,6 +323,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(47);
         }
+        
+        character16.setVisible(false);
+
     }
 
     @FXML
@@ -316,6 +339,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(49);
         }
+        
+        character2.setVisible(false);
+
     }
 
     @FXML
@@ -327,6 +353,9 @@ public class SelectCharacterController {
           }else {
         	  img=avatars.get(34);
           }
+        
+        character3.setVisible(false);
+
     }
 
     @FXML
@@ -338,6 +367,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(35);
         }
+        
+        character4.setVisible(false);
+
     }
 
     @FXML
@@ -349,6 +381,9 @@ public class SelectCharacterController {
           }else {
         	  img=avatars.get(36);
           }
+        
+        character5.setVisible(false);
+
     }
 
     @FXML
@@ -360,6 +395,9 @@ public class SelectCharacterController {
           }else {
         	  img=avatars.get(37);
           }
+        
+        character6.setVisible(false);
+
     }
 
     @FXML
@@ -371,6 +409,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(38);
         }
+        
+        character7.setVisible(false);
+
     }
 
     @FXML
@@ -382,6 +423,9 @@ public class SelectCharacterController {
           }else {
         	  img=avatars.get(39);
           }
+        
+        character8.setVisible(false);
+
     }
 
     @FXML
@@ -393,6 +437,9 @@ public class SelectCharacterController {
         }else {
       	  img=avatars.get(40);
         }
+        
+        character9.setVisible(false);
+
     }
 	public void loadAvatars() throws IOException {
 		File file = new File(PATH);

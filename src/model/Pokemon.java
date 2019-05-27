@@ -64,8 +64,8 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		}
 
 
-		public void setChampPic(Image champPic) {
-			this.img = champPic;
+		public void setImg(Image img) {
+			this.img = img;
 		}
 
 

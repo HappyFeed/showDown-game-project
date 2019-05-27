@@ -16,6 +16,7 @@ public class Player implements Serializable, Searching{
 	//Attributes
 	private String name;
     private Image profilePicture;
+    private int size;
     
     private Player next;
     private Player prev;
@@ -77,44 +78,35 @@ public class Player implements Serializable, Searching{
 	}
 	public void addPokemonLinkedList(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) throws BigTeamException  {
 		Pokemon p= new Pokemon(name, champPic, k, baseLife, basicAtack, basicDefense, especialAtack, especialDefense, speed);
-		int size=sizeTeam();
-		System.out.println("inicio"+size);
 		if(team == null) {
 			team = p;
 			size++;
 			System.out.println("ROOT"+size);
 		}else {
-			Pokemon current = team;			
-    		while(current.getNextPokemon()!=null) {
-    			size++;
+			Pokemon current = team;	
+			boolean flag=false;
+    		while(!flag) {
+    			if (current.getNextPokemon()==null) {
+    				current.setNextPokemon(p);
+    				p.setPrevPokemon(current);
+    				size++;
+    				flag=true;
+        			System.out.println(size);
+
+					
+				}
     			current=current.getNextPokemon();
-    			System.out.println(size);
     		}
-			current.setNextPokemon(p);
-			p.setPrevPokemon(current);
-    		/*if(size<6) {    	
-    			System.out.println("TEAM"+size);
-				current.setNextPokemon(p);
-    			p.setPrevPokemon(current);
-			}else if(size>6) {
-				throw new BigTeamException();			
-			}*/
+			
 		}
 	}
 	
-	public int sizeTeam() {		
-		int size=0;
-		if(team!=null) {
-			while(team.getNextPokemon()!=null) {
-				size++;
-				team=team.getNextPokemon();
-				System.out.println(size);
-			}
-		}
-
+	
+   	
+	public int getSize() {
 		return size;
 	}
-   	
+
 	public void loadPokemons() throws IOException {
 		File file = new File(PATH);
 		FileReader fileReader = new FileReader(file);
@@ -140,7 +132,7 @@ public class Player implements Serializable, Searching{
 			Pokemon current=rootPokemons;
 			Boolean flag=false;
 			while(!flag) {
-				if(current.compareTo(part)>0) {
+				if(current.compareTo(part)<0) {
 					if(current.getRight()!=null) {
 						current= current.getRight();
 					}else {
@@ -181,8 +173,9 @@ public class Player implements Serializable, Searching{
 				return current;
 			}
 		}
-		return current;
+		return s;
 	}
+	
 	public ArrayList<Pokemon> inOrder(){
 		return inOrder(rootPokemons);
 	}
