@@ -205,7 +205,7 @@ public class SelectCharacterController {
 			FXMLLoader loader= new FXMLLoader(getClass().getResource("SelectTeam.fxml"));
 			Parent root=loader.load();
 			SelectTeamController stc= (SelectTeamController) loader.getController();
-	    	stc.setPlayers(g.getFirstPlayer()); 
+	    	stc.setPlayers(g.getFirstPlayer(),g); 
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 		} catch (IOException e) {

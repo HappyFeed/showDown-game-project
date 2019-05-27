@@ -25,6 +25,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.stage.StageStyle;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import model.Game;
 import model.Player;
 import model.Pokemon;
 
@@ -101,7 +102,7 @@ public class SelectTeamController {
     private TextField pokemonToSearch;
 
     private Player players;
-    
+    private Game gm;
     
     
     public List<Button> addButtons() {
@@ -125,8 +126,9 @@ public class SelectTeamController {
     	return l;
     }
     
-    public void setPlayers(Player p) {
+    public void setPlayers(Player p, Game nGame) {
 		try {
+			gm=nGame;
 	    	players=p;
 			players.loadPokemons();
 			next.setVisible(false);
@@ -594,13 +596,15 @@ public class SelectTeamController {
 
     @FXML
     void nextToStage(ActionEvent event) {
-    	
-    	Parent root;
+
 		try {
-			root = FXMLLoader.load(getClass().getResource("Match.fxml"));
+			FXMLLoader loader= new FXMLLoader(getClass().getResource("Match.fxml"));
+			Parent root=loader.load();
+			MatchController mc= (MatchController) loader.getController();
+	    	mc.setGame(gm); 
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
-		
+		   
 
 		} catch (IOException e) {
 			e.printStackTrace();

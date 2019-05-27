@@ -10,9 +10,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import model.Game;
 
 public class MatchController {
 
+	
 	
     @FXML
     private Circle poke6;
@@ -125,6 +127,12 @@ public class MatchController {
     @FXML
     private Label currentPlayer;
 
+    private Game newGame;
+    
+    public void setGame(Game nGame) {
+    	newGame=nGame;
+    }
+    
     @FXML
     void attack1(ActionEvent event) {
 
