@@ -157,13 +157,13 @@ public class Player implements Serializable, Searching{
 	
 	private Pokemon searchPokemon( Pokemon current,Pokemon s) {
 		if(current!=null) {
-			if(current.compareTo(s)<0) {
+			if(s.compareTo(current)<0) {
 				if(current.getLeft()!=null){
 					return searchPokemon(current.getLeft(),s);
 				}else {
 					return searchPokemon(current.getRight(), s);
 				}
-			}else if(current.compareTo(s)>0){
+			}else if(s.compareTo(current)>0){
 				if(current.getRight()!=null) {
 					return searchPokemon(current.getRight(), s);
 				}else {
@@ -173,7 +173,7 @@ public class Player implements Serializable, Searching{
 				return current;
 			}
 		}
-		return s;
+		return current;
 	}
 	
 	public ArrayList<Pokemon> inOrder(){
