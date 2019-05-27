@@ -602,6 +602,7 @@ public class SelectTeamController {
 			Parent root=loader.load();
 			MatchController mc= (MatchController) loader.getController();
 	    	mc.setGame(gm); 
+	    
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 		   
