@@ -81,7 +81,6 @@ public class Player implements Serializable, Searching{
 		if(team == null) {
 			team = p;
 			size++;
-			System.out.println("ROOT"+size);
 		}else {
 			Pokemon current = team;	
 			boolean flag=false;
@@ -90,10 +89,7 @@ public class Player implements Serializable, Searching{
     				current.setNextPokemon(p);
     				p.setPrevPokemon(current);
     				size++;
-    				flag=true;
-        			System.out.println(size);
-
-					
+    				flag=true;				
 				}
     			current=current.getNextPokemon();
     		}
@@ -228,5 +224,44 @@ public class Player implements Serializable, Searching{
 		}
 		
 		return found;
+	}
+	
+	public void bubbleSortByName() {
+		if(team != null) {
+			
+			boolean changed = true;
+			while(changed) {
+				Pokemon currentNode = team;
+				changed = false;
+				//System.out.println("== NEW ITERATION A ==");
+				while(currentNode.getNextPokemon() != null) {
+					Pokemon nextNode = currentNode.getNextPokemon();
+					//System.out.println(currentNode+" ? "+nextNode);
+					if(currentNode.compareTo(nextNode)>0) {
+						if(currentNode.getPrevPokemon()!=null) {
+							currentNode.getPrevPokemon().setNextPokemon(nextNode);
+						}
+						if(nextNode.getNextPokemon()!=null) {
+							nextNode.getNextPokemon().setPrevPokemon(currentNode);
+						}
+						
+						currentNode.setNextPokemon(nextNode.getNextPokemon());
+						nextNode.setPrevPokemon(currentNode.getPrevPokemon());
+						currentNode.setPrevPokemon(nextNode);
+						nextNode.setNextPokemon(currentNode);
+						
+						
+						if(currentNode==team) {
+							team = nextNode;
+						}
+						
+						changed = true;
+						
+					}else{
+						currentNode = currentNode.getNextPokemon();
+					}
+				}				
+			}
+		}
 	}
 }
