@@ -63,4 +63,12 @@ public class Game implements Serializable{
 			
 			return returned;
 		}
+		
+		public void switchPlayer() {
+			
+		Player aux= firstPlayer;
+		firstPlayer=firstPlayer.getNextPlayer();
+		firstPlayer.setNextPlayer(aux);
+		
+		}
 }

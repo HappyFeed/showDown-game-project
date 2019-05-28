@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -275,6 +276,8 @@ public class MatchController {
         	ht.start();
         }
         
+    
+        
     }
 
     public void setWeight(double w) {
@@ -333,6 +336,7 @@ public class MatchController {
         	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
         	ht.start();
         }
+       
     }
 
     @FXML
@@ -359,6 +363,9 @@ public class MatchController {
         	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
         	ht.start();
         }
+        
+      
+        
     }
 
     @FXML
@@ -371,6 +378,7 @@ public class MatchController {
     	Pokemon current=p.searchPokemonInTeam(pokemonInBattle.getText());
     	Pokemon enemy=p.getNextPlayer().searchPokemonInTeam(enemyInBattle.getText());
     	System.out.println(enemy.getBaseLife());
+    	
         if(parts[2].equals("Damage")) {
         	power=Integer.parseInt(parts[3]);
         	HealthThread ht= new HealthThread(currentHPRival,enemy,current,power,0.0,"Damage",this);
@@ -380,11 +388,15 @@ public class MatchController {
         	health=Double.parseDouble(parts[3]);
         	HealthThread ht= new HealthThread(currentHP,null,current,power,health,"Health",this);
         	ht.start();
+       
         }else if(parts[2].equals("Defense")){
         	power=Integer.parseInt(parts[3]);
         	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
         	ht.start();
+      
         }
+        
+        
     }
 
     @FXML
