@@ -3,6 +3,8 @@ package model;
 @SuppressWarnings("serial")
 public class SkillDefense extends Skill {
 
+
+
 	int type;
 	int skillDefense;
 	
@@ -26,6 +28,11 @@ public class SkillDefense extends Skill {
 
 	public void setSkillDefense(int skillDefense) {
 		this.skillDefense = skillDefense;
+	}
+	
+	@Override
+	public String toString() {
+		return "type: " + type + "\n skillDefense: " + skillDefense ;
 	}
 	
 }

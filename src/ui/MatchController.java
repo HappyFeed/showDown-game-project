@@ -1,6 +1,7 @@
 package ui;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import javafx.scene.shape.Rectangle;
 import model.Game;
 import model.Player;
 import model.Pokemon;
+import model.Skill;
 
 public class MatchController {
 
@@ -209,6 +211,15 @@ public class MatchController {
     	return l;
     }
     
+    public List<Button> addAtacks(){
+    	List<Button> l= new ArrayList<Button>();
+    	l.add(attack1);
+    	l.add(attack2);
+    	l.add(attack3);
+    	l.add(attack4);
+    	return l;
+    }
+    
     @FXML
     void attack1(ActionEvent event) {
 
@@ -241,7 +252,7 @@ public class MatchController {
 
     @FXML
     void switchPoke1(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -621,7 +632,7 @@ public class MatchController {
 
 			}
     		while (pokeInTeam!=null) {
-    			
+    			setSkills(pokeInTeam);
     			if(p.equals(newGame.getFirstPlayer())) {
     			for (int i = 0; i < b.size(); i++) {
     			
@@ -650,6 +661,18 @@ public class MatchController {
     	
     }
     
-   
+    public void setSkills(Pokemon p) {
+    	ArrayList<Button> l=(ArrayList<Button>)addAtacks();
+    	for(int i=0;i<4;i++) {
+    		Skill s;
+			try {
+				s = p.selectSkill();
+				l.get(i).setText(s.getSkillName()+"\n"+s.getDescription()+"\n"+ s.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    		
+    	}
+    }
 	
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 
@@ -34,7 +35,7 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 		
 		//Methods	
 		public Pokemon(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense,
-				double especialAtack, double especialDefense, double speed) {
+				double especialAtack, double especialDefense, double speed) throws IOException {
 			super();
 			this.name = name;
 			this.img = champPic;
@@ -45,6 +46,7 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 			this.especialAtack = especialAtack;
 			this.especialDefense = especialDefense;
 			this.speed = speed;
+			loadSkills();
 
 		}
 		
@@ -203,7 +205,6 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 					addSkillsToTree(s);
 				}
 				line = br.readLine();
-
 			}
 			fileReader.close();
 			br.close();
@@ -236,6 +237,27 @@ public class Pokemon implements Serializable,  Comparable<Pokemon>{
 			}
 		}
 
+		public Skill selectSkill() throws IOException {
+			ArrayList<Skill> s=preOrder();
+			int n=(int) (Math.random() * (s.size()-1)) + 1;
+			Skill selected=s.get(n);
+			return selected;
+		}
+		
+		public ArrayList<Skill> preOrder(){
+			return preOrder(rootSkills);
+		}
+		private ArrayList<Skill> preOrder(Skill root){
+			ArrayList<Skill> s= new ArrayList<Skill>();
+			if(root!=null) {
+				s.add(root);
+				ArrayList<Skill> ls=preOrder(root.getLeft());
+				ArrayList<Skill> lr=preOrder(root.getRight());
+				s.addAll(ls);
+				s.addAll(lr);
+			}
+			return s;
+		}
 		@Override
 		public int compareTo(Pokemon p) {
 			int comparation;
