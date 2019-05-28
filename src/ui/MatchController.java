@@ -225,6 +225,7 @@ public class MatchController {
     
     @FXML
     void attack1(ActionEvent event) {
+    	
 
     }
 
@@ -256,30 +257,35 @@ public class MatchController {
     @FXML
     void switchPoke1(ActionEvent event) {
     	
+    	changePokemon(creature1.getText());
     }
 
     @FXML
     void switchPoke2(ActionEvent event) {
+    	changePokemon(creature2.getText());
 
     }
 
     @FXML
     void switchPoke3(ActionEvent event) {
-
+    	changePokemon(creature3.getText());
     }
 
     @FXML
     void switchPoke4(ActionEvent event) {
+    	changePokemon(creature4.getText());
 
     }
 
     @FXML
     void switchPoke5(ActionEvent event) {
+    	changePokemon(creature5.getText());
 
     }
 
     @FXML
     void switchPoke6(ActionEvent event) {
+    	changePokemon(creature6.getText());
 
     }
     
@@ -638,11 +644,12 @@ public class MatchController {
     			setSkills(pokeInTeam);
     			if(p.equals(newGame.getFirstPlayer())) {
     			for (int i = 0; i < b.size(); i++) {
-    			
+    				
 					myPokes.get(i).setFill(new ImagePattern(whatIconPokemosIs(pokeInTeam.getName())));
 					currentPokes.get(i).setFill(new ImagePattern(whatIconPokemosIs(pokeInTeam.getName())));
 					b.get(i).setBackground(new Background(new BackgroundImage(whatIconPokemosIs(pokeInTeam.getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,new BackgroundSize(34, 34, true, true, false, false))));  
-    				pokeInTeam=pokeInTeam.getNextPokemon();
+    				b.get(i).setText(pokeInTeam.getName());
+					pokeInTeam=pokeInTeam.getNextPokemon();
     			}	
     			}else {
     				for (int i = 0; i < myPokes.size(); i++) {
@@ -683,6 +690,18 @@ public class MatchController {
 				poke=p.getPokemons();
 			}
     	}
+    	
+    }
+    
+    public void changePokemon(String name) {
+    	
+    	Player p=newGame.getFirstPlayer();
+    	Pokemon poke = p.searchPokemonInTeam(name);
+    	imagePokeCurrent.setFill(new ImagePattern(poke.getImg()));
+			
+		
+
+		
     	
     }
     

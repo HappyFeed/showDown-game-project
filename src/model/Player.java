@@ -523,5 +523,23 @@ public class Player implements Serializable, Searching{
 		}
 		
 	}
+	
+	public Pokemon searchPokemonInTeam(String n) {
+		Pokemon aux=team;
+		Pokemon found=aux;
+		while (aux!=null) {
+			if (aux.getName().equals(n)) {
+				found=aux;
+				aux=null;
+			}else {
+			
+			aux=aux.getNextPokemon();
+			}
+		}
+		return found;
+	}
+	
+	
+	
 
 }
