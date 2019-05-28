@@ -1,7 +1,9 @@
 package model;
 
+import java.io.Serializable;
+
 @SuppressWarnings("serial")
-public class SkillHealth extends Skill{
+public class SkillHealth extends Skill  implements Serializable{
 
 
 
