@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -132,6 +133,12 @@ public class MatchController {
     private Button attack4;
 
     @FXML
+    private Button organiceButton;
+    
+    @FXML
+    private ComboBox<String> electionTo;
+    
+    @FXML
     private Label turns;
 
     @FXML
@@ -256,6 +263,10 @@ public class MatchController {
 
     }
     
+    @FXML
+    void organiceAction(ActionEvent event) {
+
+    }
   
 	private Image whatIconPokemosIs(String name) {
 		if(name.equals("Zubat")==true) {
@@ -589,7 +600,8 @@ public class MatchController {
     			for (int i = 0; i < b.size(); i++) {
     			
 					myPokes.get(i).setFill(new ImagePattern(whatIconPokemosIs(pokeInTeam.getName())));
-	    			b.get(i).setBackground(new Background(new BackgroundImage(whatIconPokemosIs(pokeInTeam.getName()),BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT,BackgroundPosition.CENTER,new BackgroundSize(34, 34, true, true, false, false))));  
+					currentPokes.get(i).setFill(new ImagePattern(whatIconPokemosIs(pokeInTeam.getName())));
+					//b.get(i).setBackground(new Background(new BackgroundImage(whatIconPokemosIs(pokeInTeam.getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,new BackgroundSize(34, 34, true, true, false, false))));  
     				pokeInTeam=pokeInTeam.getNextPokemon();
     			}	
     			}else {
