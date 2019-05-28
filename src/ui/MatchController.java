@@ -149,6 +149,7 @@ public class MatchController {
     public void setGame(Game nGame) {
     	newGame=nGame;
     	putIcons();
+    	setPokemonsInBattle();
     }
     
     public List<Button> addButtons() {
@@ -621,6 +622,27 @@ public class MatchController {
 			}
 		}
     
+    	
+    }
+    
+    public void setPokemonsInBattle() {
+    	
+    	Player p= newGame.getFirstPlayer();
+    	Pokemon poke=p.getPokemons();
+    	boolean flag=false;
+    	while(p!=null) {
+    		if(!flag) {
+    			imagePokeCurrent.setFill(new ImagePattern(poke.getImg()));
+    			flag=true;
+    		}else {
+    			imageRivalPoke.setFill(new ImagePattern(poke.getImg()));
+    		}
+    		
+    		p=p.getNextPlayer();
+    		if(p!=null) {
+				poke=p.getPokemons();
+			}
+    	}
     	
     }
     
