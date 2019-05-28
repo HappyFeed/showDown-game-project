@@ -16,9 +16,13 @@ public class RefreshMatchThread extends Thread {
 	
 	@Override
 	public void run() {
-		
-		g.switchPlayer();
-		mc.setGame(g);
+		try {
+			g.switchPlayer();
+			mc.setGame(g);
+		}catch(IllegalStateException ise) {
+			System.err.println("It is over");
+		}
+
 		
 	}
 

@@ -79,6 +79,8 @@ public class HealthThread extends Thread{
 		}catch (InterruptedException e) {
 
 				e.printStackTrace();
+		}catch(IllegalStateException ise) {
+			System.err.println("It is over");
 		}
 	}
 	
