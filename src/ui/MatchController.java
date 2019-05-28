@@ -149,6 +149,12 @@ public class MatchController {
     public void setGame(Game nGame) {
     	newGame=nGame;
     	putIcons();
+    	electionTo.getItems().add("Life");
+    	electionTo.getItems().add("Speed");
+    	electionTo.getItems().add("Basic atack");
+    	electionTo.getItems().add("Special atack");
+    	electionTo.getItems().add("Basic defense");
+    	electionTo.getItems().add("Especial defense");
     }
     
     public List<Button> addButtons() {
@@ -265,7 +271,27 @@ public class MatchController {
     
     @FXML
     void organiceAction(ActionEvent event) {
-
+    	String order=electionTo.getValue();
+    	Player p=newGame.getFirstPlayer();
+    	if(order.equals("Life")) {
+    		p.selectionByBaseLife();
+    		putIcons();
+    	}else if(order.equals("Speed")) {
+    		p.bubbleSortBySpeed();
+    		putIcons();
+    	}else if(order.equals("Basic atack")) {
+    		p.selectionByAtackBasic();
+    		putIcons();
+    	}else if(order.equals("Special atack")) {
+    		p.selectionByAtackEspecial();
+    		putIcons();
+    	}else if(order.equals("Basic defense")) {
+    		p.insertionByDefenseBasic();
+    		putIcons();
+    	}else if(order.equals("Especial defense")) {
+    		p.insertionByDefenseEspecial();
+    		putIcons();
+    	}
     }
   
 	private Image whatIconPokemosIs(String name) {
@@ -601,7 +627,7 @@ public class MatchController {
     			
 					myPokes.get(i).setFill(new ImagePattern(whatIconPokemosIs(pokeInTeam.getName())));
 					currentPokes.get(i).setFill(new ImagePattern(whatIconPokemosIs(pokeInTeam.getName())));
-					//b.get(i).setBackground(new Background(new BackgroundImage(whatIconPokemosIs(pokeInTeam.getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,new BackgroundSize(34, 34, true, true, false, false))));  
+					b.get(i).setBackground(new Background(new BackgroundImage(whatIconPokemosIs(pokeInTeam.getName()),BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,new BackgroundSize(34, 34, true, true, false, false))));  
     				pokeInTeam=pokeInTeam.getNextPokemon();
     			}	
     			}else {
