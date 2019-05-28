@@ -34,6 +34,7 @@ import model.SkillDamage;
 import model.SkillDefense;
 import model.SkillHealth;
 import threads.HealthThread;
+import threads.RefreshMatchThread;
 
 public class MatchController {
 
@@ -358,10 +359,13 @@ public class MatchController {
         	health=Double.parseDouble(parts[3]);
         	HealthThread ht= new HealthThread(currentHP,null,current,power,health,"Health",this);
         	ht.start();
+
+
         }else if(parts[2].equals("Defense")){
         	power=Integer.parseInt(parts[3]);
         	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
         	ht.start();
+
         }
         
       
@@ -788,7 +792,11 @@ public class MatchController {
 	}
     
     private void putIcons() {
-    	 
+    	currentImage.setImage(null);
+    	rivalImage.setImage(null);
+    	currentPlayer.setText("");
+    	rivalPlayer.setText("");
+    	
     	ArrayList<Button> b=(ArrayList<Button>) addButtons();
     	ArrayList<Circle> currentPokes= (ArrayList<Circle>) addCirclesPokes();
     	ArrayList<Circle> rivalPokes= (ArrayList<Circle>) addCirclesRivalPokes();
@@ -800,7 +808,7 @@ public class MatchController {
     		if (currentImage.getImage()==null) {
 				currentImage.setImage(p.getProfilePicture());
 				currentPlayer.setText(p.getName());
-			}else {
+			}else if(rivalImage.getImage()==null) {
 				rivalImage.setImage(p.getProfilePicture());
 				rivalPlayer.setText(p.getName());
 
@@ -892,7 +900,17 @@ public class MatchController {
 			}
     		
     	}
+    	
+    	
+    	
     }
+    
+    public Game getGame() {
+		
+		return newGame;
+	}
+    
+    
 
 	
 }

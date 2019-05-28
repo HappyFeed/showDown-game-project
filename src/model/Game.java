@@ -69,6 +69,6 @@ public class Game implements Serializable{
 		Player aux= firstPlayer;
 		firstPlayer=firstPlayer.getNextPlayer();
 		firstPlayer.setNextPlayer(aux);
-		
+		firstPlayer.getNextPlayer().setNextPlayer(null);
 		}
 }

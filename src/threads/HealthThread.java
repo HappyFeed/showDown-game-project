@@ -1,5 +1,9 @@
 package threads;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
+import javafx.application.Platform;
 import javafx.scene.shape.Rectangle;
 import model.Pokemon;
 import ui.MatchController;
@@ -13,8 +17,11 @@ public class HealthThread extends Thread{
 	private double health;
 	private String kindSkill;
 	private MatchController mc;
-	
+	CountDownLatch time;
+	RefreshMatchThread rm;
+
 	public HealthThread(Rectangle r, Pokemon enemyPokemon,Pokemon teamPokemon, int power, double health,String kindSkill,MatchController mc) {
+		time=new CountDownLatch(1);
 		this.r = r;
 		this.enemyPokemon = enemyPokemon;
 		this.teamPokemon = teamPokemon;
@@ -22,6 +29,7 @@ public class HealthThread extends Thread{
 		this.health = health;
 		this.kindSkill = kindSkill;
 		this.mc=mc;
+		rm=new RefreshMatchThread(mc, mc.getGame());
 	}
 	
 	public void run() {
@@ -64,12 +72,15 @@ public class HealthThread extends Thread{
 				
 
 			}
-
+		    time.await(700,TimeUnit.MILLISECONDS);
+			time.countDown();
+			rm.start();
 		   
 		}catch (InterruptedException e) {
 
 				e.printStackTrace();
 		}
 	}
+	
 	
 }
