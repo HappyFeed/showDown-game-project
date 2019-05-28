@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import model.Game;
 
 
@@ -19,6 +21,9 @@ public class MenuController {
 	private static final String SAVE_PLAYERS="playerSave/playersSave.ps";
 	private Game gm;
 
+	@FXML
+	private Pane pane;
+	
     @FXML
     void start(ActionEvent event) throws Exception { 
     	gm= new Game();
@@ -38,6 +43,11 @@ public class MenuController {
     void loadGame(ActionEvent event){
 		ArrayList<Game> s= load();
 		s.size();
+		for(int i=0;i<s.size();i++) {
+			Button n= new Button();
+			n.setText(s.get(i).getFirstPlayer().getName()+"\n"+s.get(i).getFirstPlayer().getNextPlayer().getName());
+		    pane.getChildren().add(n);
+		}
     }
 	
     @SuppressWarnings("unchecked")

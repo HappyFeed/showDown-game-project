@@ -1,7 +1,10 @@
 package ui;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +30,7 @@ import model.Skill;
 
 public class MatchController {
 
-	
+	public static final String SER_FILE="playerSave/games.sc";
 	
     @FXML
     private Circle poke6;
@@ -251,6 +254,16 @@ public class MatchController {
 
     @FXML
     void saveGame(ActionEvent event) {
+		  ObjectOutputStream oos;
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream(SER_FILE));
+			oos.writeObject(newGame);
+			oos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
     }
 
