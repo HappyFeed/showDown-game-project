@@ -71,5 +71,13 @@ public class MenuController {
 		}
     	return savedGames;
     }
+    
+    public void changeScene() throws IOException {
+		
+		Parent root=FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		Scene scene= new Scene(root);
+		Main.stage.setScene(scene);
+		
+	}
 
 }
