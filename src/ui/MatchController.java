@@ -21,12 +21,18 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import model.Game;
 import model.Player;
 import model.Pokemon;
 import model.Skill;
+import model.SkillAlteredStates;
+import model.SkillDamage;
+import model.SkillDefense;
+import model.SkillHealth;
+import threads.HealthThread;
 
 public class MatchController {
 
@@ -148,6 +154,24 @@ public class MatchController {
 
     @FXML
     private Label currentPlayer;
+    
+    @FXML
+    private Label pokemonInBattle;
+   
+    @FXML
+    private Label enemyInBattle;
+    
+    @FXML
+    private Label enemyPowerUp;
+    
+    @FXML
+    private Label enemyState;
+    
+    @FXML
+    private Label powerUp;
+    
+    @FXML
+    private Label allyState;
 
     private Game newGame;
     
@@ -228,10 +252,51 @@ public class MatchController {
     
     @FXML
     void attack1(ActionEvent event) {
-    	
-
+    	String atackQuality=attack1.getText();
+    	String[] parts= atackQuality.split("\n");
+    	int power=0;
+    	double health=0;
+    	Player p=newGame.getFirstPlayer();
+    	Pokemon current=p.searchPokemonInTeam(pokemonInBattle.getText());
+    	Pokemon enemy=p.getNextPlayer().searchPokemonInTeam(enemyInBattle.getText());
+    	System.out.println(enemy.getBaseLife());
+        if(parts[2].equals("Damage")) {
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHPRival,enemy,current,power,0.0,parts[2],this);
+        	ht.start();
+        	System.out.println(enemy.getBaseLife());
+        }else if(parts[2].equals("Health")) {
+        	health=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,health,parts[2],this);
+        	ht.start();
+        }else if(parts[2].equals("Defense")){
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,parts[2],this);
+        	ht.start();
+        }
+        
     }
 
+    public void setWeight(double w) {
+    	currentHPRival.setWidth(w);
+    }
+    
+    public void setFillRed() {
+    	currentHPRival.setFill(Paint.valueOf("red"));
+    }
+    
+    public void setFillGreen() {
+    	currentHPRival.setFill(Paint.valueOf("lightgreen"));
+    }
+    
+    public void setPowerUP(String n) {
+    	powerUp.setText(n);
+    }
+    
+    public void setEnemyPowerUP(String n) {
+    	enemyState.setText(n);
+    }
+    
     @FXML
     void attack2(ActionEvent event) {
 
@@ -693,9 +758,11 @@ public class MatchController {
     	while(p!=null) {
     		if(!flag) {
     			imagePokeCurrent.setFill(new ImagePattern(poke.getImg()));
+    			pokemonInBattle.setText(poke.getName());
     			flag=true;
     		}else {
     			imageRivalPoke.setFill(new ImagePattern(poke.getImg()));
+    			enemyInBattle.setText(poke.getName());
     		}
     		
     		p=p.getNextPlayer();
@@ -711,11 +778,8 @@ public class MatchController {
     	Player p=newGame.getFirstPlayer();
     	Pokemon poke = p.searchPokemonInTeam(name);
     	imagePokeCurrent.setFill(new ImagePattern(poke.getImg()));
-			
-		
-
-		
-    	
+    	pokemonInBattle.setText(name);
+		setSkills(poke);	   	
     }
     
    
@@ -726,7 +790,16 @@ public class MatchController {
     		Skill s;
 			try {
 				s = p.selectSkill();
-				l.get(i).setText(s.getSkillName()+"\n"+s.getDescription()+"\n"+ s.toString());
+				if(s instanceof SkillDamage) {
+					l.get(i).setText(s.getSkillName()+"\n"+s.getDescription()+"\n"+"Damage"+ s.toString());
+				}else if(s instanceof SkillAlteredStates) {
+					l.get(i).setText(s.getSkillName()+"\n"+s.getDescription()+"\n"+"States"+ s.toString());
+				}else if(s instanceof SkillDefense) {
+					l.get(i).setText(s.getSkillName()+"\n"+s.getDescription()+"\n"+"Defense"+ s.toString());
+				}else if(s instanceof SkillHealth) {
+					l.get(i).setText(s.getSkillName()+"\n"+s.getDescription()+"\n"+"Health"+ s.toString());
+				}
+			
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

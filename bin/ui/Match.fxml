@@ -48,6 +48,12 @@
             <Rectangle fx:id="imageRivalPoke" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="99.0" layoutX="304.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
             <Rectangle fx:id="currentHP" arcHeight="5.0" arcWidth="5.0" fill="#04ff00" height="17.0" layoutX="18.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="170.0" />
             <Rectangle fx:id="currentHPRival" arcHeight="5.0" arcWidth="5.0" fill="#04ff00" height="17.0" layoutX="221.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="170.0" />
+            <Label fx:id="pokemonInBattle" layoutX="18.0" layoutY="161.0" prefHeight="17.0" prefWidth="88.0" textFill="WHITE" />
+            <Label fx:id="enemyInBattle" layoutX="221.0" layoutY="14.0" prefHeight="17.0" prefWidth="88.0" textFill="WHITE" />
+            <Label fx:id="powerUp" layoutX="117.0" layoutY="228.0" prefHeight="17.0" prefWidth="72.0" textFill="WHITE" />
+            <Label fx:id="enemyState" layoutX="221.0" layoutY="54.0" prefHeight="17.0" prefWidth="72.0" textFill="WHITE" />
+            <Label fx:id="allyState" layoutX="117.0" layoutY="211.0" prefHeight="17.0" prefWidth="72.0" textFill="WHITE" />
+            <Label fx:id="enemyPowerUp" layoutX="221.0" layoutY="71.0" prefHeight="17.0" prefWidth="72.0" textFill="WHITE" />
          </children>
       </Pane>
       <Button fx:id="attack1" layoutX="262.0" layoutY="390.0" mnemonicParsing="false" onAction="#attack1" prefHeight="55.0" prefWidth="99.0" />

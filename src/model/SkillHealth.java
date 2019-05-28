@@ -24,7 +24,7 @@ public class SkillHealth extends Skill  implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "healthPercent: " + healthPercent ;
+		return  "\n"+healthPercent ;
 	}
 	
 }

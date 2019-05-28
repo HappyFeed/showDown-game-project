@@ -34,7 +34,7 @@ public class SkillDefense extends Skill implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "type: " + type + "\n skillDefense: " + skillDefense ;
+		return "\n" + skillDefense ;
 	}
 	
 }

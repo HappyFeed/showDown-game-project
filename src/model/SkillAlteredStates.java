@@ -20,7 +20,7 @@ public class SkillAlteredStates extends Skill implements Serializable{
 
 	@Override
 	public String toString() {
-		return "alteredStateCode: " + alteredStateCode ;
+		return "\n" + alteredStateCode ;
 	}
 	
 	
