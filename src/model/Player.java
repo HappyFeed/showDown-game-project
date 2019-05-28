@@ -76,7 +76,7 @@ public class Player implements Serializable, Searching{
 	public Pokemon getRootPokemon() {
 		return rootPokemons;
 	}
-	public void addPokemonLinkedList(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) throws BigTeamException  {
+	public void addPokemonLinkedList(String name, Image champPic, Type k, double baseLife, double basicAtack, double basicDefense, double especialAtack, double especialDefense, double speed) throws BigTeamException, IOException  {
 		Pokemon p= new Pokemon(name, champPic, k, baseLife, basicAtack, basicDefense, especialAtack, especialDefense, speed);
 		if(team == null) {
 			team = p;
@@ -147,7 +147,7 @@ public class Player implements Serializable, Searching{
 			}
 		}
 	}
-	public Pokemon searchPokemon(String id) {
+	public Pokemon searchPokemon(String id) throws IOException {
 		Pokemon s= new Pokemon(id,null,Type.Fire,200,200,200,200,200,200);
 		return searchPokemon(rootPokemons,s);
 	}
@@ -504,7 +504,7 @@ public class Player implements Serializable, Searching{
 			while(current != null) {
 				Pokemon temp = current;
 				while(temp.getPrevPokemon() != null) {					
-					if(temp.getEspecialDefense() < temp.getPrevPokemon().getBasicDefense()) {
+					if(temp.getEspecialDefense() < temp.getPrevPokemon().getEspecialDefense()) {
 						if(temp.getPrevPokemon() == team) team = temp;
 						Pokemon next = temp.getNextPokemon();
 						Pokemon prev = temp.getPrevPokemon().getPrevPokemon();

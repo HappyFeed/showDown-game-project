@@ -3,6 +3,8 @@ package model;
 @SuppressWarnings("serial")
 public class SkillHealth extends Skill{
 
+
+
 	double healthPercent;
 	
 	public SkillHealth(String skillName, String skillDescription,double healthPercent) {
@@ -16,6 +18,11 @@ public class SkillHealth extends Skill{
 
 	public void setHealthPercent(double healthPercent) {
 		this.healthPercent = healthPercent;
+	}
+	
+	@Override
+	public String toString() {
+		return "healthPercent: " + healthPercent ;
 	}
 	
 }

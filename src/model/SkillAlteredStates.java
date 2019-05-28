@@ -15,5 +15,12 @@ public class SkillAlteredStates extends Skill{
 	public void setAlteredStateCode(int alteredStateCode) {
 		this.alteredStateCode = alteredStateCode;
 	}
+
+	@Override
+	public String toString() {
+		return "alteredStateCode: " + alteredStateCode ;
+	}
+	
+	
 	
 }

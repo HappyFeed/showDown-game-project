@@ -732,7 +732,8 @@ public class SelectTeamController {
         	String nameToSearch=pokemonToSearch.getText();
         	Pokemon searching=null;
         	if(kind.equals("Binary")) {
-        		Pokemon p=new Pokemon(nameToSearch,null,null,200,200,200,200,200,200);
+        		Pokemon p;
+				p = new Pokemon(nameToSearch,null,null,200,200,200,200,200,200);
         		searching=players.binarySearch(p);
         	}else if(kind.equals("Lineal")){
         		Pokemon p=new Pokemon(nameToSearch,null,null,200,200,200,200,200,200);
@@ -758,7 +759,10 @@ public class SelectTeamController {
 		    score.initStyle(StageStyle.DECORATED);
 		    score.setContentText("That pokemons is not in this season");
 		    score.show();
-    	}
+    	} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
     
