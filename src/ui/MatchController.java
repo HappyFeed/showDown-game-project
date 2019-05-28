@@ -262,16 +262,16 @@ public class MatchController {
     	System.out.println(enemy.getBaseLife());
         if(parts[2].equals("Damage")) {
         	power=Integer.parseInt(parts[3]);
-        	HealthThread ht= new HealthThread(currentHPRival,enemy,current,power,0.0,parts[2],this);
+        	HealthThread ht= new HealthThread(currentHPRival,enemy,current,power,0.0,"Damage",this);
         	ht.start();
         	System.out.println(enemy.getBaseLife());
         }else if(parts[2].equals("Health")) {
-        	health=Integer.parseInt(parts[3]);
-        	HealthThread ht= new HealthThread(currentHP,null,current,power,health,parts[2],this);
+        	health=Double.parseDouble(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,health,"Health",this);
         	ht.start();
         }else if(parts[2].equals("Defense")){
         	power=Integer.parseInt(parts[3]);
-        	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,parts[2],this);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
         	ht.start();
         }
         
@@ -289,6 +289,18 @@ public class MatchController {
     	currentHPRival.setFill(Paint.valueOf("lightgreen"));
     }
     
+    public void setFillGreenA() {
+    	currentHP.setFill(Paint.valueOf("lightgreen"));
+    }
+    
+    public void setFillBlue() {
+    	currentHP.setFill(Paint.valueOf("blue"));
+    }
+    
+    public void setFillPink() {
+    	currentHP.setFill(Paint.valueOf("pink"));
+    }
+    
     public void setPowerUP(String n) {
     	powerUp.setText(n);
     }
@@ -299,17 +311,80 @@ public class MatchController {
     
     @FXML
     void attack2(ActionEvent event) {
-
+    	String atackQuality=attack2.getText();
+    	String[] parts= atackQuality.split("\n");
+    	int power=0;
+    	double health=0;
+    	Player p=newGame.getFirstPlayer();
+    	Pokemon current=p.searchPokemonInTeam(pokemonInBattle.getText());
+    	Pokemon enemy=p.getNextPlayer().searchPokemonInTeam(enemyInBattle.getText());
+    	System.out.println(enemy.getBaseLife());
+        if(parts[2].equals("Damage")) {
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHPRival,enemy,current,power,0.0,"Damage",this);
+        	ht.start();
+        	System.out.println(enemy.getBaseLife());
+        }else if(parts[2].equals("Health")) {
+        	health=Double.parseDouble(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,health,"Health",this);
+        	ht.start();
+        }else if(parts[2].equals("Defense")){
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
+        	ht.start();
+        }
     }
 
     @FXML
     void attack3(ActionEvent event) {
-
+    	String atackQuality=attack3.getText();
+    	String[] parts= atackQuality.split("\n");
+    	int power=0;
+    	double health=0;
+    	Player p=newGame.getFirstPlayer();
+    	Pokemon current=p.searchPokemonInTeam(pokemonInBattle.getText());
+    	Pokemon enemy=p.getNextPlayer().searchPokemonInTeam(enemyInBattle.getText());
+    	System.out.println(enemy.getBaseLife());
+        if(parts[2].equals("Damage")) {
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHPRival,enemy,current,power,0.0,"Damage",this);
+        	ht.start();
+        	System.out.println(enemy.getBaseLife());
+        }else if(parts[2].equals("Health")) {
+        	health=Double.parseDouble(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,health,"Health",this);
+        	ht.start();
+        }else if(parts[2].equals("Defense")){
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
+        	ht.start();
+        }
     }
 
     @FXML
     void attack4(ActionEvent event) {
-
+    	String atackQuality=attack4.getText();
+    	String[] parts= atackQuality.split("\n");
+    	int power=0;
+    	double health=0;
+    	Player p=newGame.getFirstPlayer();
+    	Pokemon current=p.searchPokemonInTeam(pokemonInBattle.getText());
+    	Pokemon enemy=p.getNextPlayer().searchPokemonInTeam(enemyInBattle.getText());
+    	System.out.println(enemy.getBaseLife());
+        if(parts[2].equals("Damage")) {
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHPRival,enemy,current,power,0.0,"Damage",this);
+        	ht.start();
+        	System.out.println(enemy.getBaseLife());
+        }else if(parts[2].equals("Health")) {
+        	health=Double.parseDouble(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,health,"Health",this);
+        	ht.start();
+        }else if(parts[2].equals("Defense")){
+        	power=Integer.parseInt(parts[3]);
+        	HealthThread ht= new HealthThread(currentHP,null,current,power,0.0,"Defense",this);
+        	ht.start();
+        }
     }
 
     @FXML

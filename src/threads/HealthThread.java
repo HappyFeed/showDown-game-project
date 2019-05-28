@@ -38,25 +38,17 @@ public class HealthThread extends Thread{
 			    rec=r.getWidth()-(r.getWidth()*indiceV);
 			    enemyPokemon.setBaseLife(life);
 				mc.setFillRed();
-				mc.setEnemyPowerUP("-"+damage);
 				sleep(500);			
 				mc.setWeight(rec);
-				mc.setEnemyPowerUP("");
 				mc.setFillGreen();
 			}else if(kindSkill.equals("Defense")){
 				damage=teamPokemon.getBasicDefense()+power;
 				teamPokemon.setBasicDefense(damage);
-				mc.setPowerUP("+"+damage+" Defense");
+				mc.setFillBlue();
 				sleep(500);
-				mc.setPowerUP("");
+				mc.setFillGreenA();
 			}else if(kindSkill.equals("Health")){
-				if(r.getWidth()==170) {
-					damage=teamPokemon.getBaseLife()+(teamPokemon.getBaseLife()*health);
-					teamPokemon.setBaseLife(damage);
-					mc.setPowerUP("+"+damage+" Health");
-					sleep(500);
-					mc.setPowerUP("");
-				}else if(r.getWidth()<170){
+				 if(r.getWidth()<170){
 					damage=teamPokemon.getBaseLife()+(teamPokemon.getBaseLife()*health);
 					indiceV=1-(life/enemyPokemon.getBaseLife());
 					rec=r.getWidth()+(r.getWidth()*indiceV);
@@ -64,10 +56,10 @@ public class HealthThread extends Thread{
 						rec=rec-(rec-170);
 					}
 					teamPokemon.setBaseLife(damage);
-					mc.setPowerUP("+"+damage+" Health");
+					mc.setFillPink();
 					sleep(500);
 					mc.setWeight(rec);
-					mc.setPowerUP("");
+					mc.setFillGreenA();
 				}
 				
 
