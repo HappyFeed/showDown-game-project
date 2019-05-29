@@ -14,13 +14,20 @@ import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
 public class IntroController{
+	
+	//Atributtes
 
     @FXML
     private MediaView mediaView;
     private  MediaPlayer mediaPlayer;
 	private  Media media;
 	
-
+	/*This method allow initialize main 
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return void
+	 * @post: Main initialized
+	 */
 	
 	public void initialize() throws Exception {
 		

@@ -25,6 +25,13 @@ public class MenuController {
 	private Pane pane;
 	
     @FXML
+    
+    /*This method allow start the scene
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Scene Started
+	 */
     void start(ActionEvent event) throws Exception { 
     	gm= new Game();
     	FXMLLoader loader= new FXMLLoader(getClass().getResource("SelectCharacter.fxml"));
@@ -40,6 +47,12 @@ public class MenuController {
 	}
 
 	@FXML
+	/*This method allow load game
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Game loaded
+	 */
     void loadGame(ActionEvent event){
 		ArrayList<Game> s= load();
 		s.size();
@@ -71,6 +84,12 @@ public class MenuController {
 		}
     	return savedGames;
     }
+    /*This method allow change scene
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: scene changed
+	 */
     
     public void changeScene() throws IOException {
 		

@@ -11,6 +11,10 @@ public class IntroThread extends Thread {
 	
 	
 	MenuController mc;
+	
+	/*This is constructor method of IntroThread
+	 * 
+	 */
 	public IntroThread() {
 		
 	        	mc=new MenuController();
@@ -19,6 +23,12 @@ public class IntroThread extends Thread {
 	    		      
        
 	}
+	/*This method allow to run the Thread
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return void
+	 * @post: run the Thread
+	 */
 	
 	@Override
 	public void run() {

@@ -19,6 +19,10 @@ public class HealthThread extends Thread{
 	private MatchController mc;
 	CountDownLatch time;
 	RefreshMatchThread rm;
+	
+	/*This is a constructor method of HealthThread
+	 * 
+	 */
 
 	public HealthThread(Rectangle r, Pokemon enemyPokemon,Pokemon teamPokemon, int power, double health,String kindSkill,MatchController mc) {
 		time=new CountDownLatch(1);
@@ -31,6 +35,13 @@ public class HealthThread extends Thread{
 		this.mc=mc;
 		rm=new RefreshMatchThread(mc, mc.getGame());
 	}
+
+	/*This method allow to run the Thread
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return void
+	 * @post: run the Thread
+	 */
 	
 	public void run() {
 		try {

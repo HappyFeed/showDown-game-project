@@ -111,6 +111,13 @@ public class SelectCharacterController {
 
     private Game g;
     
+    /*This method allow load game
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Game loaded
+	 */
+    
     public void recibirGame(Game newGame) throws IOException {
     	g= newGame;
     	loadAvatars();
@@ -118,12 +125,26 @@ public class SelectCharacterController {
     }
     
     @FXML
+    /*This method allow initialize scene
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: scene initialized
+	 */
+    
     void initialize() {
     	next.setVisible(false);
     	selectPlayer.setText("1");
     }
     
     @FXML
+    
+    /*This method allow save players
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Players saved
+	 */
     void savePlayers(ActionEvent event) {   	
     	try {
 			if(g.addPlayer(namePlayers.getText(), img)==true) {
@@ -160,6 +181,13 @@ public class SelectCharacterController {
     }
     
     @FXML
+    /*This method allow go to back page
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Go to back page
+	 */
+    
     void backPage(ActionEvent event) throws IOException {
         int newPage= Integer.parseInt(pages.getText())-1;
         if(newPage>0) {
@@ -170,6 +198,14 @@ public class SelectCharacterController {
     }
 
     @FXML
+    
+    /*This method allow go to next page
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Go to next page
+	 */
+    
     void nextPage(ActionEvent event) throws IOException {
     	int newPage= Integer.parseInt(pages.getText())+1;
         if(newPage<(50/16)+2) {
@@ -180,6 +216,13 @@ public class SelectCharacterController {
     }
     
     @FXML
+    
+    /*This method allow go to back stage
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Go to back stage
+	 */
     void backToStage(ActionEvent event) {
     	
     
@@ -198,7 +241,12 @@ public class SelectCharacterController {
     }
 
 
-
+    /*This method allow go to next stage
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Go to next stage
+	 */
     @FXML
     void nextToStage(ActionEvent event) {
 		try {
@@ -214,6 +262,13 @@ public class SelectCharacterController {
     	
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter1(ActionEvent event) {
@@ -229,6 +284,13 @@ public class SelectCharacterController {
       
       character1.setVisible(false);
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter10(ActionEvent event) {
@@ -243,6 +305,13 @@ public class SelectCharacterController {
         character10.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter11(ActionEvent event) {
@@ -257,6 +326,13 @@ public class SelectCharacterController {
         character11.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter12(ActionEvent event) {
@@ -271,6 +347,13 @@ public class SelectCharacterController {
         character12.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter13(ActionEvent event) {
@@ -285,6 +368,13 @@ public class SelectCharacterController {
         character13.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter14(ActionEvent event) {
@@ -299,6 +389,13 @@ public class SelectCharacterController {
         character14.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter15(ActionEvent event) {
@@ -313,6 +410,13 @@ public class SelectCharacterController {
         character15.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter16(ActionEvent event) {
@@ -327,6 +431,13 @@ public class SelectCharacterController {
         character16.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter2(ActionEvent event) {
@@ -343,6 +454,13 @@ public class SelectCharacterController {
         character2.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter3(ActionEvent event) {
@@ -357,6 +475,13 @@ public class SelectCharacterController {
         character3.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter4(ActionEvent event) {
@@ -371,6 +496,13 @@ public class SelectCharacterController {
         character4.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter5(ActionEvent event) {
@@ -385,6 +517,13 @@ public class SelectCharacterController {
         character5.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter6(ActionEvent event) {
@@ -399,6 +538,13 @@ public class SelectCharacterController {
         character6.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter7(ActionEvent event) {
@@ -413,6 +559,13 @@ public class SelectCharacterController {
         character7.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter8(ActionEvent event) {
@@ -427,6 +580,13 @@ public class SelectCharacterController {
         character8.setVisible(false);
 
     }
+    
+    /*This method allow select character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Character selected
+	 */
 
     @FXML
     void selectThisCharacter9(ActionEvent event) {
@@ -441,6 +601,14 @@ public class SelectCharacterController {
         character9.setVisible(false);
 
     }
+    
+    /*This method allow load avatar
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Avatars loaded
+	 */
+    
 	public void loadAvatars() throws IOException {
 		File file = new File(PATH);
 		 avatars= new ArrayList<Image>();
@@ -461,6 +629,14 @@ public class SelectCharacterController {
 		br.close();
 	
 	}
+	
+	/*This method allow show avatars
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Avatars showed
+	 */
+	
     public void showAvatars() throws IOException {
     	List<Button>b=addButtons();
     	int pagesN=avatars.size()/16;
@@ -489,6 +665,14 @@ public class SelectCharacterController {
     	    }
 		}
     }
+    
+    /*This method allow clean data
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Data cleaned
+	 */
+    
     public void clearData() {
     	character1.setVisible(false);
     	character2.setVisible(false);
@@ -507,6 +691,14 @@ public class SelectCharacterController {
     	character15.setVisible(false);
     	character16.setVisible(false);
     }
+    
+    /*This method allow create a list of buttom with the character
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: List of buttoms 
+	 */
+    
     public List<Button> addButtons() {
     	List<Button> l= new ArrayList<Button>();
     	l.add(character1);

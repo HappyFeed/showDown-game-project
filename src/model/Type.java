@@ -4,6 +4,13 @@ public enum Type {
 	Normal,Fire,Water,Electric,Grass,Ice,Fighting,
 	 Poison,Ground,Flying,Psychic,Bug,Rock,Ghost,
 	 Dragon,Dark,Steel,Fairy;
+	
+	/*This method is to asign type
+	 * @pre: type == null
+	 * @param: int n
+	 * @return: This method return a Type
+	 * @post: got a Type
+	 */
 	 
 	public Type assigType(int n) {
 		Type p=null;

@@ -24,6 +24,13 @@ public class Main extends Application{
 		
 	}
 	
+	/*This method allow start main 
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return void
+	 * @post: Main initialized
+	 */
+	
 	@Override
 	public void start(Stage stage) throws Exception {
 		

@@ -103,7 +103,13 @@ public class SelectTeamController {
 
     private Player players;
     private Game gm;
-    
+
+    /*This method allow create a List of buttoms with pokemons
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: List of buttoms
+	 */
     
     public List<Button> addButtons() {
     	List<Button> l= new ArrayList<Button>();
@@ -126,6 +132,13 @@ public class SelectTeamController {
     	return l;
     }
     
+    /*This method allow set Players
+	 * @pre: game != null && player != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: set players
+	 */
+    
     public void setPlayers(Player p, Game nGame) {
 		try {
 			gm=nGame;
@@ -141,6 +154,14 @@ public class SelectTeamController {
 		}
 
     }
+    
+    /*This method allow save Pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Pokemon saved
+	 */
+    
     public void savePokemon(String name,Image pokemonPic) {
     	try {
         	Pokemon p=players.searchPokemon(name);
@@ -173,6 +194,13 @@ public class SelectTeamController {
     		e.printStackTrace();
     	}
  }
+    
+    /*This method allow show information
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: information showed
+	 */
 
     public void showInformation() throws IOException {
     	clearData();
@@ -206,6 +234,12 @@ public class SelectTeamController {
     	    }
 		}
     }
+    /*This method allow put the pokemons with the correct image
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Pokemon correct
+	 */
     
     private Image whatPokemosIs(String name) {
 		if(name.equals("Zubat")==true) {
@@ -514,7 +548,13 @@ public class SelectTeamController {
 			return new Image(new File("iconPokemons/0.jpg").toURI().toString());
 		}
 	}
-
+    /*This method allow go to backPage
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Go to back page
+	 */
+    
 	@FXML
     void backPage(ActionEvent event) throws IOException {
         int newPage= Integer.parseInt(pages.getText())-1;
@@ -526,6 +566,13 @@ public class SelectTeamController {
     }
 
     @FXML
+    
+    /*This method allow go to next page
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Go to the next page
+	 */
     void nextPage(ActionEvent event) throws IOException {
     	int newPage= Integer.parseInt(pages.getText())+1;
         if(newPage<(149/16)+2) {
@@ -534,6 +581,13 @@ public class SelectTeamController {
         	showInformation();
         }
     }
+    
+    /*This method allow clear the data
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Data clear
+	 */
     
     public void clearData() {
     	pokemon1.setText("");
@@ -571,6 +625,13 @@ public class SelectTeamController {
     	
     	
     }
+    
+    /*This method allow disable buttoms
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Buttoms disbled
+	 */
     public void disableButtons() {
     	pokemon1.setDisable(true);
     	pokemon2.setDisable(true);
@@ -595,6 +656,13 @@ public class SelectTeamController {
     }
 
     @FXML
+    
+    /*This method allow go to the next stage
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Next stage
+	 */
     void nextToStage(ActionEvent event) {
 
 		try {
@@ -614,6 +682,13 @@ public class SelectTeamController {
     }
 
     @FXML
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
     void selectThisPokemon1(ActionEvent event) {
     	String namePokemon=pokemon1.getText();
     	Image img=whatPokemosIs(namePokemon);
@@ -621,11 +696,26 @@ public class SelectTeamController {
     }
 
     @FXML
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
+    
     void selectThisPokemon10(ActionEvent event) {
     	String namePokemon=pokemon10.getText();
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon11(ActionEvent event) {
@@ -633,6 +723,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon12(ActionEvent event) {
@@ -640,6 +737,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon13(ActionEvent event) {
@@ -647,6 +751,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon14(ActionEvent event) {
@@ -654,6 +765,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon15(ActionEvent event) {
@@ -661,6 +779,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon16(ActionEvent event) {
@@ -668,6 +793,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon2(ActionEvent event) {
@@ -675,6 +807,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon3(ActionEvent event) {
@@ -682,6 +821,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon4(ActionEvent event) {
@@ -689,6 +835,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon5(ActionEvent event) {
@@ -696,6 +849,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon6(ActionEvent event) {
@@ -703,6 +863,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon7(ActionEvent event) {
@@ -710,6 +877,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon8(ActionEvent event) {
@@ -717,6 +891,13 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    
+    /*This method allow select pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon selected
+	 */ 
 
     @FXML
     void selectThisPokemon9(ActionEvent event) {
@@ -724,6 +905,12 @@ public class SelectTeamController {
     	Image img=whatPokemosIs(namePokemon);
     	savePokemon(namePokemon,img);
     }
+    /*This method allow search a method or ordering
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: ordering selected
+	 */ 
     
     @FXML
     void searchAction(ActionEvent event) {

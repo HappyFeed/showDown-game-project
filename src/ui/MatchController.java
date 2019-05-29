@@ -11,9 +11,12 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -21,6 +24,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -177,6 +181,13 @@ public class MatchController {
 
     private Game newGame;
     
+    /*This method allow set game 
+	 * @pre: newGame != null
+	 * @param: Game nGame
+	 * @return: This method return void
+	 * @post: New game
+	 */
+    
     public void setGame(Game nGame) {
     	newGame=nGame;
     	putIcons();
@@ -191,6 +202,12 @@ public class MatchController {
     	electionTo.getItems().add("Especial defense");
     }
     
+    /*This method allow create a List of buttoms 
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return List of buttoms
+	 * @post: List of buttoms
+	 */
     public List<Button> addButtons() {
     	List<Button> l= new ArrayList<Button>();
     	l.add(creature1);
@@ -203,7 +220,12 @@ public class MatchController {
     
     	return l;
     }
-    
+    /*This method allow create a List of circle
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return List of circle
+	 * @post: List of circle
+	 */
     public List<Circle> addCirclesPokes() {
     	List<Circle> l= new ArrayList<Circle>();
     	l.add(poke1);
@@ -217,6 +239,12 @@ public class MatchController {
     	return l;
     }
     
+    /*This method allow create a List of circle
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return List of circle
+	 * @post: List of circle
+	 */
     public List<Circle> addCirclesCurrentPokes() {
     	List<Circle> l= new ArrayList<Circle>();
     	l.add(currentPoke1);
@@ -229,6 +257,12 @@ public class MatchController {
     
     	return l;
     }
+    /*This method allow create a List of circle
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return List of circle
+	 * @post: List of circle
+	 */
     
     public List<Circle> addCirclesRivalPokes() {
     	List<Circle> l= new ArrayList<Circle>();
@@ -242,6 +276,12 @@ public class MatchController {
     
     	return l;
     }
+    /*This method allow create a List of buttoms
+	 * @pre: empty
+	 * @param: empty
+	 * @return: This method return List of buttoms
+	 * @post: List of buttoms
+	 */
     
     public List<Button> addAtacks(){
     	List<Button> l= new ArrayList<Button>();
@@ -253,6 +293,14 @@ public class MatchController {
     }
     
     @FXML
+    
+    /*This method allow attack
+	 * @pre: firstPlayer != null && firstPlayer.getNext() != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Attack of player
+	 */
+    
     void attack1(ActionEvent event) {
     	String atackQuality=attack1.getText();
     	String[] parts= atackQuality.split("\n");
@@ -314,6 +362,13 @@ public class MatchController {
     }
     
     @FXML
+    /*This method allow attack
+	 * @pre: firstPlayer != null && firstPlayer.getNext() != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Attack of player
+	 */
+    
     void attack2(ActionEvent event) {
     	String atackQuality=attack2.getText();
     	String[] parts= atackQuality.split("\n");
@@ -339,6 +394,13 @@ public class MatchController {
         }
        
     }
+    
+    /*This method allow attack
+	 * @pre: firstPlayer != null && firstPlayer.getNext() != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Attack of player
+	 */
 
     @FXML
     void attack3(ActionEvent event) {
@@ -373,6 +435,13 @@ public class MatchController {
     }
 
     @FXML
+    
+    /*This method allow attack
+	 * @pre: firstPlayer != null && firstPlayer.getNext() != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Attack of player
+	 */
     void attack4(ActionEvent event) {
     	String atackQuality=attack4.getText();
     	String[] parts= atackQuality.split("\n");
@@ -402,11 +471,29 @@ public class MatchController {
         
         
     }
+    
+    /*This method allow give up
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: give up
+	 */
 
     @FXML
     void giveUp(ActionEvent event) {
 
+    	Alert alert = new Alert(AlertType.INFORMATION, "You lost", ButtonType.OK);
+    	alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+    	alert.show();
+    	System.exit(0);
     }
+    
+    /*This method allow save
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Saved
+	 */
 
     @FXML
     void saveGame(ActionEvent event) {
@@ -424,41 +511,84 @@ public class MatchController {
     }
 
     @FXML
+    /*This method allow switch Pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon switched
+	 */
+    
     void switchPoke1(ActionEvent event) {
     	
     	changePokemon(creature1.getText());
     }
 
     @FXML
+    /*This method allow switch Pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon switched
+	 */
     void switchPoke2(ActionEvent event) {
     	changePokemon(creature2.getText());
 
     }
 
     @FXML
+    /*This method allow switch Pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon switched
+	 */
     void switchPoke3(ActionEvent event) {
     	changePokemon(creature3.getText());
     }
 
     @FXML
+    /*This method allow switch Pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon switched
+	 */
     void switchPoke4(ActionEvent event) {
     	changePokemon(creature4.getText());
 
     }
 
     @FXML
+    /*This method allow switch Pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon switched
+	 */
     void switchPoke5(ActionEvent event) {
     	changePokemon(creature5.getText());
 
     }
 
     @FXML
+    /*This method allow switch Pokemon
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: pokemon switched
+	 */
     void switchPoke6(ActionEvent event) {
     	changePokemon(creature6.getText());
 
     }
     
     @FXML
+    /*This method allow organize scene
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Scene organized
+	 */
     void organiceAction(ActionEvent event) {
     	String order=electionTo.getValue();
     	Player p=newGame.getFirstPlayer();
@@ -483,6 +613,12 @@ public class MatchController {
     	}
     }
   
+    /*This method allow have the pokemons with their images
+	 * @pre: game != null
+	 * @param: ActionEvent event
+	 * @return: This method return void
+	 * @post: Pokemon with images
+	 */
 	private Image whatIconPokemosIs(String name) {
 		if(name.equals("Zubat")==true) {
 			return new Image(new File("iconPokemons/41.png").toURI().toString());
@@ -791,6 +927,7 @@ public class MatchController {
 		}
 	}
     
+	
     private void putIcons() {
     	currentImage.setImage(null);
     	rivalImage.setImage(null);
