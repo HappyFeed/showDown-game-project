@@ -44,6 +44,8 @@
       <Circle fx:id="currentPoke1" fill="WHITE" layoutX="26.0" layoutY="250.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Pane layoutX="100.0" layoutY="4.0" prefHeight="322.0" prefWidth="403.0" style="-fx-background-color: black;">
          <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="19.0" layoutX="221.0" layoutY="33.0" stroke="#eeeeee" strokeType="INSIDE" width="172.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="19.0" layoutX="18.0" layoutY="181.0" stroke="#eeeeee" strokeType="INSIDE" width="172.0" />
             <Rectangle fx:id="imagePokeCurrent" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="99.0" layoutX="39.0" layoutY="203.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
             <Rectangle fx:id="imageRivalPoke" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="99.0" layoutX="304.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
             <Rectangle fx:id="currentHP" arcHeight="5.0" arcWidth="5.0" fill="#04ff00" height="17.0" layoutX="18.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="170.0" />
